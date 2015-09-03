@@ -1,1 +1,3 @@
-01.09
+- **01.09** 2h GitHubin asentelu ja muu vastaava 
+- **02.09** 1h NetBeansin saattaminen toimintakuntoon ja vastaava toiminta 
+- **03.09** 1h Aihemäärittelyn kirjoittaminen ja md-tiedostojen ihmettely
