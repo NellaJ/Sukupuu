@@ -1,3 +1,5 @@
 - **01.09** 2h GitHubin asentelu ja muu vastaava 
 - **02.09** 1h NetBeansin saattaminen toimintakuntoon ja vastaava toiminta 
 - **03.09** 1h Aihemäärittelyn kirjoittaminen ja md-tiedostojen ihmettely
+- **05.09** 6h Kertaus: ohpe ja ohja
+- **06.09** 2h Kertaus: otm, 2,5h Ohjelman suunnittelua, koodaamista ja NetBeansin kanssa tappelua ja päivittämistä
