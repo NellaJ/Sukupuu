@@ -8,21 +8,21 @@ public class Henkilo {
     private boolean mutaationKantaja;
     private String sukupolvi;
     private String ID;
+    private String sukupuoli;
 
-    Henkilo(String nimi) {
-        this.ika = 0;
-        this.sairaus = "";
-        this.mutaationKantaja = false;
-        this.sukupolvi = "";
-        this.ID = "";
+    public Henkilo(String nimi, String sukupuoli) {
+        this.nimi = nimi;
+        this.sukupuoli = sukupuoli;
     }
 
-    public Henkilo(int ika, String sairaus, boolean mutaationKantaja, String sukupolvi, String ID) {
+    public Henkilo(String nimi, int ika, String sairaus, boolean mutaationKantaja, String sukupolvi, String ID, String sukupuoli) {
+        this.nimi = nimi;
         this.ika = ika;
         this.sairaus = sairaus;
         this.mutaationKantaja = mutaationKantaja;
         this.sukupolvi = sukupolvi;
         this.ID = ID;
+        this.sukupuoli = sukupuoli;
     }
 
     public void setNimi(String nimi) {
@@ -35,7 +35,8 @@ public class Henkilo {
 
     @Override
     public String toString() {
-        return super.toString();
+        System.out.println("Nimi: " + this.nimi + " ikä: " + this.ika + " Sairaus: " + this.sairaus + " Kantaako mutaatiota? " + this.mutaationKantaja + " Sukupuoli: " + this.sukupuoli);
+        return null;
     }
 
     public void setSukupolvi(String sukupolvi) {
@@ -76,5 +77,13 @@ public class Henkilo {
 
     public String getID() {
         return ID;
+    }
+
+    public void setSukupuoli(String sukupuoli) {
+        this.sukupuoli = sukupuoli;
+    }
+
+    public String getSukupuoli() {
+        return sukupuoli;
     }
 }
