@@ -6,26 +6,29 @@ import java.util.ArrayList;
 public class NewMain {
 
     public static void main(String[] args) {
-      //   (String nimi, int ika, String sairaus, boolean mutaationKantaja, String sukupolvi, String ID, String sukupuoli) {
-        ArrayList<Henkilo> ihmislista;
-        ihmislista = new ArrayList<>();
+        ArrayList<Henkilo> ihmislista = new ArrayList<>();
         
-        Henkilo matti = new Henkilo("Matti Virtanen", 38, "Värisokeus", true, "II", "MV", "M");
-        ihmislista.add(matti);
-        Henkilo pentti = new Henkilo("Pentti Virtanen", 47, "", false, "II", "PV", "M");
-        ihmislista.add(pentti);
-        Henkilo saara = new Henkilo("Saara Virtanen", 28, "", true, "II", "SV", "N");
-        ihmislista.add(saara);
-        Henkilo tarmo = new Henkilo("Tarmo Virtanen", 98, "Värisokeus", true, "I", "TV", "M");
-        ihmislista.add(tarmo);
-        Henkilo irja = new Henkilo("Irja Virtanen", 87, "", true, "I", "IV", "N");
-        ihmislista.add(irja);
-        Henkilo pipsa = new Henkilo("Pipsa Virtanen", 25, "", true, "III", "PV", "N");
-        ihmislista.add(pipsa);
+        Henkilo eka = new Henkilo("MV", 38, "HCM", true, "M");
+        ihmislista.add(eka);
+        Henkilo toka = new Henkilo("PV", 47, "", false, "M");
+        ihmislista.add(toka);
+        Henkilo kolmas = new Henkilo("SV", 28, "", true, "N");
+        ihmislista.add(kolmas);
+        Henkilo neljas = new Henkilo("TV");
+        ihmislista.add(neljas);
+        Henkilo viides = new Henkilo("IV");
+        viides.setIka(88);
+        viides.setMutaationKantaja(true);
+        ihmislista.add(viides);
+        Henkilo kuudes = new Henkilo("HI");
+        kuudes.setSukupuoli("M");
+        ihmislista.add(kuudes);
         
-        for (Henkilo ihminen : ihmislista) {
-            ihminen.toString();
-        }
+        Henkilo kim = new Henkilo("Kim Kuusisto", 31, "On sairas", false, "M");
+        kim.toString();
+   //     for (Henkilo ihminen : ihmislista) {
+   //         ihminen.toString();
+    //    }
         
     }
 }
