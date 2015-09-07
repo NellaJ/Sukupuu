@@ -1,4 +1,3 @@
-
 package sukupuu.sukupuu;
 
 import java.util.ArrayList;
@@ -7,7 +6,7 @@ public class NewMain {
 
     public static void main(String[] args) {
         ArrayList<Henkilo> ihmislista = new ArrayList<>();
-        
+
         Henkilo eka = new Henkilo("MV", 38, "HCM", true, "M");
         ihmislista.add(eka);
         Henkilo toka = new Henkilo("PV", 47, "", false, "M");
@@ -23,12 +22,10 @@ public class NewMain {
         Henkilo kuudes = new Henkilo("HI");
         kuudes.setSukupuoli("M");
         ihmislista.add(kuudes);
-        
-        Henkilo kim = new Henkilo("Kim Kuusisto", 31, "On sairas", false, "M");
-        kim.toString();
-   //     for (Henkilo ihminen : ihmislista) {
-   //         ihminen.toString();
-    //    }
-        
+
+        for (Henkilo ihminen : ihmislista) {
+            ihminen.toString();
+        }
+
     }
 }
