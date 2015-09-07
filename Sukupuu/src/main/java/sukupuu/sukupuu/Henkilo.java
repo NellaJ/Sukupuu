@@ -7,22 +7,26 @@ public class Henkilo {
     private String sairaus;
     private boolean mutaationKantaja;
     private String sukupolvi;
-    private String ID;
     private String sukupuoli;
 
-    public Henkilo(String nimi, String sukupuoli) {
+    Henkilo(String nimi) {
+        this.ika = 0;
+        this.sairaus = "";
+        this.mutaationKantaja = false;
+        this.sukupuoli = "";
+        this.sukupolvi = "";
         this.nimi = nimi;
-        this.sukupuoli = sukupuoli;
+
     }
 
-    public Henkilo(String nimi, int ika, String sairaus, boolean mutaationKantaja, String sukupolvi, String ID, String sukupuoli) {
+    public Henkilo(String nimi, int ika, String sairaus, boolean mutaationKantaja, String sukupuoli) {
         this.nimi = nimi;
         this.ika = ika;
         this.sairaus = sairaus;
         this.mutaationKantaja = mutaationKantaja;
-        this.sukupolvi = sukupolvi;
-        this.ID = ID;
         this.sukupuoli = sukupuoli;
+        this.sukupolvi = "";
+
     }
 
     public void setNimi(String nimi) {
@@ -35,12 +39,20 @@ public class Henkilo {
 
     @Override
     public String toString() {
-        System.out.println("Nimi: " + this.nimi + " ikä: " + this.ika + " Sairaus: " + this.sairaus + " Kantaako mutaatiota? " + this.mutaationKantaja + " Sukupuoli: " + this.sukupuoli);
-        return null;
+        System.out.println("Henkilö " + this.nimi + " " + this.ika + " vuotta." + "Kantaa mutaatiota? " + this.mutaationKantaja + " Sukupuoli: " + this.sukupuoli);
+        return super.toString();
     }
 
-    public void setSukupolvi(String sukupolvi) {
-        this.sukupolvi = sukupolvi;
+    public void setSukupuoli(String sukupuoli) {
+        this.sukupuoli = sukupuoli;
+    }
+
+    public String getSukupuoli() {
+        return sukupuoli;
+    }
+
+    public String getSairaus() {
+        return sairaus;
     }
 
     public void setSairaus(String sairaus) {
@@ -51,39 +63,23 @@ public class Henkilo {
         this.mutaationKantaja = mutaationKantaja;
     }
 
-    public void setIka(int ika) {
-        this.ika = ika;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-    public String getSukupolvi() {
-        return sukupolvi;
-    }
-
     public boolean isMutaationKantaja() {
         return mutaationKantaja;
     }
 
-    public String getSairaus() {
-        return sairaus;
+    public void setIka(int ika) {
+        this.ika = ika;
     }
 
     public int getIka() {
         return ika;
     }
 
-    public String getID() {
-        return ID;
+    public String getSukupolvi() {
+        return sukupolvi;
     }
 
-    public void setSukupuoli(String sukupuoli) {
-        this.sukupuoli = sukupuoli;
-    }
-
-    public String getSukupuoli() {
-        return sukupuoli;
+    public void setSukupolvi(String sukupolvi) {
+        this.sukupolvi = sukupolvi;
     }
 }
