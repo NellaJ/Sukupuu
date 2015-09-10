@@ -9,7 +9,7 @@ public class Henkilo {
     private String sukupolvi;
     private String sukupuoli;
 
-    Henkilo(String nimi) {
+    public Henkilo(String nimi) {
         this.ika = 0;
         this.sairaus = "";
         this.mutaationKantaja = false;
