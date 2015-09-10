@@ -4,5 +4,5 @@
 - **05.09** 6h Kertaus: ohpe ja ohja
 - **06.09** 2h Kertaus: otm, 2,5h Ohjelman suunnittelua, koodaamista ja NetBeansin kanssa tappelua ja päivittämistä
 - **07.09** 1,5h Ohjelman koodaus ja suunnittelu
-- **08.09* 3h Taistelua ja päivittämistä NetBeansin kanssa
+- **08.09** 3h Taistelua ja päivittämistä NetBeansin kanssa
 - **10.09** 2,5h Otm: testaamisen kertaus, testien tekemistä
