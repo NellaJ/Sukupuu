@@ -3,7 +3,8 @@ package sukupuu.sukupuu;
 import java.util.ArrayList;
 
 public class NewMain {
-
+    
+    //Alussa voi testata luokkia täältä
     public static void main(String[] args) {
         ArrayList<Henkilo> ihmislista = new ArrayList<>();
 
