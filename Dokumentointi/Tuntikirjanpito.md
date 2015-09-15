@@ -6,3 +6,4 @@
 - **07.09** 1,5h Ohjelman koodaus ja suunnittelu
 - **08.09** 3h Taistelua ja päivittämistä NetBeansin kanssa
 - **10.09** 2,5h Otm: testaamisen kertaus, testien tekemistä
+- **15.09** 2h Uusien luokkien tekemistä, suunnittelua
