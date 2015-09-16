@@ -2,17 +2,18 @@ package piirustus;
 
 import java.awt.Container;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 public class PiirtoKayttoliittyma implements Runnable {
 
     private JFrame frame;
-    private Kuvio kuvio;
+    private ArrayList<Kuvio> kuviot;
     private Piirtoalusta piirtoalusta;
 
-    public PiirtoKayttoliittyma(Kuvio kuvio) {
-        this.kuvio = kuvio;
+    public PiirtoKayttoliittyma(ArrayList<Kuvio> kuviot) {
+        this.kuviot = kuviot;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class PiirtoKayttoliittyma implements Runnable {
     }
 
     private void luoKomponentit(Container container) {
-        piirtoalusta = new Piirtoalusta(kuvio);
+        piirtoalusta = new Piirtoalusta(kuviot);
         container.add(piirtoalusta);
     }
 
