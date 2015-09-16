@@ -7,3 +7,4 @@
 - **08.09** 3h Taistelua ja päivittämistä NetBeansin kanssa
 - **10.09** 2,5h Otm: testaamisen kertaus, testien tekemistä
 - **15.09** 2h Uusien luokkien tekemistä, suunnittelua
+- **16.09** 2h Java-opiskelua, suunnittelua
