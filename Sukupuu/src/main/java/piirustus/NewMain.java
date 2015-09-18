@@ -18,7 +18,7 @@ public class NewMain {
         kuviot.add(nelio1);
         Nelio nelio2 = new Nelio(200, 50, 50);
         kuviot.add(nelio2);
-        Viiva viiva = new Viiva(75, 75, 200, 75);
+        Viiva viiva = new Viiva(75, 75, 200, 75);   //Erityisesti viivojen kanssa koordinaatit täytyisi laskea jotenkin muista kuvioista. Viiva turhan ohut!
         kuviot.add(viiva);
         
         PiirtoKayttoliittyma kayttis = new PiirtoKayttoliittyma(kuviot);
