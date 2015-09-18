@@ -20,7 +20,7 @@ public class Piirtoalusta extends JPanel {
         super.paintComponent(graphics);
         for (Kuvio kuvio : kuviot) {
             kuvio.piirra(graphics);
-            graphics.setColor(Color.red);   //Tällä saa värin muutettua. On tosin väärässä kohdassa (muuttaa vain jälkimmäisten värit)
+           // graphics.setColor(Color.red);   //Tällä saa värin muutettua. On tosin väärässä kohdassa (muuttaa vain jälkimmäisten värit)
         }
     }
 

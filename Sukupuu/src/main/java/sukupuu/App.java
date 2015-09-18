@@ -1,4 +1,4 @@
-package sukupuu.sukupuu;
+package sukupuu;
 
 /**
  * Hello world!

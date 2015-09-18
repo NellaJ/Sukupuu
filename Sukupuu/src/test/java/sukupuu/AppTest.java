@@ -1,4 +1,4 @@
-package sukupuu.sukupuu;
+package sukupuu;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

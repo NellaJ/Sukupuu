@@ -1,3 +1,4 @@
+package sukupuu;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -5,28 +6,44 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import sukupuu.sukupuu.Henkilo;
+import sukupuu.Henkilo;
+import sukupuu.Sukupuoli;
 
-
-public class HenkiloJUnitTest {
+public class HenkiloTest {
 
     Henkilo henkilo;
 
     @Before
     public void setUp() {
-        henkilo = new Henkilo("nimi", 0, "sairas", false, "M");
+        henkilo = new Henkilo("nimi", 40, "sairas", true, Sukupuoli.MIES);
     }
 
     @Test
-    public void konstruktoriToimiiOikein() {
+    public void konstruktoriAsettaaOikeanNimen() {
         assertEquals("nimi", henkilo.getNimi());
-        assertEquals(0, henkilo.getIka());
-        assertEquals("sairas", henkilo.getSairaus());
-        assertEquals(false, henkilo.isMutaationKantaja());
-        assertEquals("M", henkilo.getSukupuoli());
+
     }
-    
-    
+
+    @Test
+    public void konstruktoriLaittaaOikeanIan() {
+        assertEquals(40, henkilo.getIka());
+    }
+
+    @Test
+    public void konstruktoriLaittaaSairaudenOikein() {
+        assertEquals("sairas", henkilo.getSairaus());
+    }
+
+    @Test
+    public void konstruktoriLaittaaMutaationOikein() {
+        assertEquals(true, henkilo.isMutaationKantaja());
+    }
+
+    @Test
+    public void konstruktoriLaittaaSukupuolenOikein() {
+        assertEquals(Sukupuoli.MIES, henkilo.getSukupuoli());
+    }
+
     @Test
     public void toinenKonstruktoriToimii() {
         Henkilo henkiloUusi = new Henkilo("nimi");
@@ -34,22 +51,21 @@ public class HenkiloJUnitTest {
         assertEquals(0, henkiloUusi.getIka());
         assertEquals("", henkiloUusi.getSairaus());
         assertEquals(false, henkiloUusi.isMutaationKantaja());
-        assertEquals("", henkiloUusi.getSukupuoli());
+        assertEquals(Sukupuoli.MUU, henkiloUusi.getSukupuoli());
     }
-    
+
     @Test
     public void sukupolviToimii() {
         String sukupolvi = "sukupolvi";
         henkilo.setSukupolvi(sukupolvi);
         assertEquals(sukupolvi, henkilo.getSukupolvi());
     }
-    
+
     @Test
     public void negatiivinenIka() {
         int ika = -10;
         henkilo.setIka(ika);
-        assertEquals(ika, henkilo.getIka());
+        assertEquals(true, henkilo.getIka() >= 0);
     }
-    
-   
+
 }

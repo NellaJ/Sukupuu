@@ -10,7 +10,8 @@ public class Nelio extends Kuvio {
         super(x, y);
         this.sivunPituus = sivunPituus;
     }
-
+    
+       
     @Override
     public void piirra(Graphics graphics) {
         graphics.fillRect(super.getX(), super.getY(), sivunPituus, sivunPituus);

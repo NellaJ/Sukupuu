@@ -1,25 +1,31 @@
-package sukupuu.sukupuu;
+package sukupuu;
 
 public class Henkilo {
+
+    //Muuttujat mutaationKantaja, sairaus ja sukupolvi luultavasti muuttuvat vielä (listoiksi tms.)
 
     private String nimi;
     private int ika;
     private String sairaus;
     private boolean mutaationKantaja;
     private String sukupolvi;
-    private String sukupuoli;
+    private Sukupuoli sukupuoli;
+
+    //Henkilön minimiparametrina nimi.
 
     public Henkilo(String nimi) {
         this.ika = 0;
         this.sairaus = "";
         this.mutaationKantaja = false;
-        this.sukupuoli = "";
+        this.sukupuoli = Sukupuoli.MUU;
         this.sukupolvi = "";
         this.nimi = nimi;
 
     }
 
-    public Henkilo(String nimi, int ika, String sairaus, boolean mutaationKantaja, String sukupuoli) {
+    //Toisena konstruktorina annetaan kaikki muuttujat
+
+    public Henkilo(String nimi, int ika, String sairaus, boolean mutaationKantaja, Sukupuoli sukupuoli) {
         this.nimi = nimi;
         this.ika = ika;
         this.sairaus = sairaus;
@@ -37,17 +43,19 @@ public class Henkilo {
         return nimi;
     }
 
+    //Tämä poistuu/muokkaantuu myöhemmin
+
     @Override
     public String toString() {
         System.out.println("Henkilö " + this.nimi + " " + this.ika + " vuotta." + "Kantaa mutaatiota? " + this.mutaationKantaja + " Sukupuoli: " + this.sukupuoli);
         return super.toString();
     }
 
-    public void setSukupuoli(String sukupuoli) {
+    public void setSukupuoli(Sukupuoli sukupuoli) {
         this.sukupuoli = sukupuoli;
     }
 
-    public String getSukupuoli() {
+    public Sukupuoli getSukupuoli() {
         return sukupuoli;
     }
 
@@ -67,8 +75,12 @@ public class Henkilo {
         return mutaationKantaja;
     }
 
+    //Ikä ei saa olla negatiivinen
+
     public void setIka(int ika) {
-        this.ika = ika;
+        if (ika >= 0) {
+            this.ika = ika;
+        }
     }
 
     public int getIka() {
