@@ -9,3 +9,4 @@
 - **15.09** 2h Uusien luokkien tekemistä, suunnittelua
 - **16.09** 2h Java-opiskelua, suunnittelua
 - **18.09** 4h Koodausta, testien tekemistä, luokkakaavion piirtäminen
+- **10.09** 2h Koodikatselmointi, ei-hyödyllisten kommenttien tekeminen
