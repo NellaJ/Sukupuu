@@ -10,3 +10,5 @@
 - **16.09** 2h Java-opiskelua, suunnittelua
 - **18.09** 4h Koodausta, testien tekemistä, luokkakaavion piirtäminen
 - **19.09** 2h Koodikatselmointi, ei-hyödyllisten kommenttien tekeminen
+- **21.09** 2h Koodailua ja Scanner-ArrayList-olio-luuppi-tappelua
+- **22.09** 2h Piirtologiikan muodostamisen yrittämistä
