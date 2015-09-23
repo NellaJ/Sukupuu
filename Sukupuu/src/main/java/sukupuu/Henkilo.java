@@ -1,18 +1,21 @@
 package sukupuu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Henkilo {
 
     //Muuttujat mutaationKantaja, sairaus ja sukupolvi luultavasti muuttuvat vielä (listoiksi tms.)
-
     private String nimi;
     private int ika;
     private String sairaus;
     private boolean mutaationKantaja;
     private String sukupolvi;
     private Sukupuoli sukupuoli;
+    private List<Henkilo> lapset;
+    private Henkilo puoliso;
 
     //Henkilön minimiparametrina nimi.
-
     public Henkilo(String nimi) {
         this.ika = 0;
         this.sairaus = "";
@@ -20,11 +23,11 @@ public class Henkilo {
         this.sukupuoli = Sukupuoli.MUU;
         this.sukupolvi = "";
         this.nimi = nimi;
+        this.lapset = new ArrayList<>();
 
     }
 
-    //Toisena konstruktorina annetaan kaikki muuttujat
-
+    //Toisena konstruktorina annetaan enemmän muuttujia 
     public Henkilo(String nimi, int ika, String sairaus, boolean mutaationKantaja, Sukupuoli sukupuoli) {
         this.nimi = nimi;
         this.ika = ika;
@@ -32,7 +35,25 @@ public class Henkilo {
         this.mutaationKantaja = mutaationKantaja;
         this.sukupuoli = sukupuoli;
         this.sukupolvi = "";
+        this.lapset = new ArrayList<>();
+    }
 
+    //Luo listan, jonne voidaan lisätä henkilön lapset. Lapsia ei välttämättä ole!
+    public void lisaaLapsi(Henkilo jalkelainen) {
+        lapset.add(jalkelainen);
+    }
+
+    public List<Henkilo> getLapset() {
+        return lapset;
+    }
+
+    //Asettaa puolison, puolisoa ei välttämättä ole!
+    public void setPuoliso(Henkilo puoliso) {
+        this.puoliso = puoliso;
+    }
+
+    public Henkilo getPuoliso() {
+        return puoliso;
     }
 
     public void setNimi(String nimi) {
@@ -44,7 +65,6 @@ public class Henkilo {
     }
 
     //Tämä poistuu/muokkaantuu myöhemmin
-
     @Override
     public String toString() {
         System.out.println("Henkilö " + this.nimi + " " + this.ika + " vuotta." + "Kantaa mutaatiota? " + this.mutaationKantaja + " Sukupuoli: " + this.sukupuoli);
@@ -76,7 +96,6 @@ public class Henkilo {
     }
 
     //Ikä ei saa olla negatiivinen
-
     public void setIka(int ika) {
         if (ika >= 0) {
             this.ika = ika;
