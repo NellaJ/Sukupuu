@@ -31,10 +31,16 @@ public class NewMain {
         viides.setSukupuoli(Sukupuoli.MIES);
         ihmislista.add(viides);
         
-
-        for (Henkilo ihminen : ihmislista) {
-            ihminen.toString();
+        eka.lisaaLapsi(viides);
+        eka.lisaaLapsi(neljas);
+        eka.setPuoliso(toka);
+        for ( Henkilo lapsi : eka.getLapset()){
+            lapsi.toString();
         }
+        eka.getPuoliso().toString();
+ //       for (Henkilo ihminen : ihmislista) {
+ //           ihminen.toString();
+  //      }
 //        Scanner lukija = new Scanner(System.in);
 //        System.out.println("Anna ensimmäinen sukupolvi! Äidin nimi: ");
 //        String nimi = lukija.nextLine();
