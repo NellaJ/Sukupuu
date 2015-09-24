@@ -3,6 +3,10 @@ package sukupuu;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Luokassa useita muuttujia henkilön kuvaamiseen. Henkilön luomiseksi tarvitaan
+ * vähintään nimi.
+ */
 public class Henkilo {
 
     //Muuttujat mutaationKantaja, sairaus ja sukupolvi luultavasti muuttuvat vielä (listoiksi tms.)
@@ -13,7 +17,7 @@ public class Henkilo {
     private String sukupolvi;
     private Sukupuoli sukupuoli;
     private List<Henkilo> lapset;
-    private Henkilo puoliso;
+    private Henkilo puoliso;        //Puoliso tarkoittaa tässä yhteydessä lapsen toista vanhempaa
 
     //Henkilön minimiparametrina nimi.
     public Henkilo(String nimi) {
@@ -39,6 +43,11 @@ public class Henkilo {
     }
 
     //Luo listan, jonne voidaan lisätä henkilön lapset. Lapsia ei välttämättä ole!
+    //Pitäisikö jälkeläinen luoda tässä ensin? Jos ko. henkilöä ei ole vielä luotu missään?
+    /**
+     * Konstruktorissa luotuun listaan voidaan lisätä henkilön jälkeläiset.
+     * @param jalkelainen Käyttäjän syöttämä henkilö
+     */
     public void lisaaLapsi(Henkilo jalkelainen) {
         lapset.add(jalkelainen);
     }
@@ -48,6 +57,13 @@ public class Henkilo {
     }
 
     //Asettaa puolison, puolisoa ei välttämättä ole!
+    //Pitääkö puoliso luoda ensin tässä?
+    /**
+     * Henkilölle voidaan lisätä puoliso Puoliso tarkoittaa tässä henkilöä,
+     * jonka kanssa on yhteinen jälkeläinen
+     *
+     * @param puoliso Käyttäjän syöttämä henkilö
+     */
     public void setPuoliso(Henkilo puoliso) {
         this.puoliso = puoliso;
     }
@@ -97,8 +113,10 @@ public class Henkilo {
 
     //Ikä ei saa olla negatiivinen
     public void setIka(int ika) {
-        if (ika >= 0) {
+        if (ika >= 0 && ika <= 150) {
             this.ika = ika;
+        } else {
+            System.out.println("Syötit iän väärin!");
         }
     }
 

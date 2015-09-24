@@ -2,6 +2,11 @@ package piirustus;
 
 import java.awt.Graphics;
 
+/**
+ * Nelio-luokka joka perii luokan Kuvio Luokka perii Kuvio-luokalta x- ja
+ * y-koordinaatin ja piirra-metodin lisäksi Nelio-luokalla on muuttuja
+ * sivunPituus
+ */
 public class Nelio extends Kuvio {
 
     private int sivunPituus;

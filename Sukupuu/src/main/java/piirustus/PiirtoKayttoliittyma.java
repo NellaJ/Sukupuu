@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+/**
+ *
+ * 
+ */
 public class PiirtoKayttoliittyma implements Runnable {
 
     private JFrame frame;
@@ -19,12 +23,12 @@ public class PiirtoKayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame();
-        frame.setPreferredSize(new Dimension (400, 400));
-        
+        frame.setPreferredSize(new Dimension(400, 400));
+
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+
         luoKomponentit(frame.getContentPane());
-        
+
         frame.pack();
         frame.setVisible(true);
     }

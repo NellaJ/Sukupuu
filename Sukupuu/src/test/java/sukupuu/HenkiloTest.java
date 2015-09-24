@@ -67,5 +67,22 @@ public class HenkiloTest {
         henkilo.setIka(ika);
         assertEquals(true, henkilo.getIka() >= 0);
     }
-
+    @Test
+    public void ikaEiLiianSuuri() {
+        int ika = 1000;
+        henkilo.setIka(ika);
+        assertEquals(true, henkilo.getIka() <= 150);
+    }
+    @Test
+    public void lapsiLisataan() {
+        Henkilo lapsi = new Henkilo("Kid");
+        henkilo.lisaaLapsi(lapsi);
+        assertEquals(false, henkilo.getLapset().isEmpty());
+    }
+    @Test
+    public void puolisoLisataan() {
+        Henkilo puoliso = new Henkilo("Puoliso");
+        henkilo.setPuoliso(puoliso);
+        assertEquals(puoliso, henkilo.getPuoliso());
+    }
 }

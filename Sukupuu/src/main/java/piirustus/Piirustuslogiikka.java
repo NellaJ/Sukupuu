@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import sukupuu.Henkilo;
 import sukupuu.Sukupuoli;
 
+/**
+ * Luokka sisältää logiikan jonka mukaan eri kuviot piirretään Luokka saa
+ * syötteenä listan henkilöitä
+ */
 public class Piirustuslogiikka {
 
     //TODO. IHAN VAIHEESSA!!! 
     //Piirretäänkö kumpi kuvio, minne ja värillä vai ilman?
     //Saa ainakin listan henkilöitä
-
     private ArrayList<Henkilo> ihmiset;
 
     public Piirustuslogiikka(ArrayList<Henkilo> ihmiset) {
@@ -18,6 +21,12 @@ public class Piirustuslogiikka {
 
     //Muuttaa henkilön neliöksi tai ympyräksi sukupuolen perusteella, koordinaatit lasketaan muualla.
     //Palauttaa listan kuvioita
+    /**
+     * Metodi saa Piirustuslogiikka-luokan listan henkilöitä ja "muuttaa" ne
+     * henkilöiden sukupuolen mukaan kuvioiksi jotka tallentaa uuteen listaan
+     * jonka on luonut
+     * @return lista kuvioita
+     */
     public ArrayList<Kuvio> piirraSukupuolet() {
         ArrayList<Kuvio> kuviolista = new ArrayList<Kuvio>();
 
@@ -31,11 +40,16 @@ public class Piirustuslogiikka {
 
         return kuviolista;
     }
-    
+
     //Laskee x-koordinaatin, vaiheessa!
+    /**
+     * 
+     * @param henkilo
+     * @return
+     */
     public int laskeX(Henkilo henkilo) {
         int x = 0;
-        
+
         if (ihmiset.get(0) == henkilo) {
             x = 50;
         }
@@ -51,28 +65,37 @@ public class Piirustuslogiikka {
         if (ihmiset.get(4) == henkilo) {
             x = 220;
         }
-         
+
         return x;
     }
-    
+
     //Laskee y-koordinaatin, vaiheessa!
+    /**
+     *
+     * @param henkilo
+     * @return
+     */
     public int laskeY(Henkilo henkilo) {
         int y = 0;
-        
+
         if (ihmiset.get(0) == henkilo || ihmiset.get(1) == henkilo) {
             y = 50;
         } else {
             y = 200;
         }
-        
+
         return y;
     }
-    
+
     //Laskee sivun pituuden/halkaisijan, voisi olla vakio
+    /**
+     *
+     * @return
+     */
     public int laskeKorkeus() {
         int numero = 50;
-        
-        return(numero);
+
+        return (numero);
     }
 
 }

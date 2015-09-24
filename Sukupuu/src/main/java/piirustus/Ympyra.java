@@ -2,6 +2,10 @@ package piirustus;
 
 import java.awt.Graphics;
 
+/**
+ * Ympyra-luokka perii luokan Kuvio Luokka perii Kuvio-luokalta x- ja
+ * y-koordinaatin ja piirra-metodin ja sillä on lisäksi muuttuja halkaisija
+ */
 public class Ympyra extends Kuvio {
 
     private int halkaisija;

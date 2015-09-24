@@ -2,6 +2,9 @@ package piirustus;
 
 import java.awt.Graphics;
 
+/**
+ * Kuvio-luokka jossa x- ja y-koordinaatti sekä abstract piirra-metodi
+ */
 public abstract class Kuvio {
 
     private int x;

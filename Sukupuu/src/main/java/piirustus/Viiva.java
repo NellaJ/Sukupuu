@@ -2,6 +2,11 @@ package piirustus;
 
 import java.awt.Graphics;
 
+/**
+ * Viiva-luokkaa perii Kuvio-luokan ja perii sieltä toiset x- ja y-koordinaatit
+ * sekä piirrä-metodin Luokalla on lisäksi toiset x- ja y-koordinaatit Toiset
+ * koordinaatit ovat viivan lähtöpiste ja toiset viivan loppumispiste
+ */
 public class Viiva extends Kuvio {
 
     private int x2;
