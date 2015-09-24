@@ -13,3 +13,4 @@
 - **21.09** 2h Koodailua ja Scanner-ArrayList-olio-luuppi-tappelua
 - **22.09** 2h Piirtologiikan muodostamisen yrittämistä
 - **23.09** 3h Parit metodit, GUI-Builderista lueskelua ja kokeilemista
+- **24.09** 2h JavaDoc: "minne se pitäisi kirjoittaa?!?" selvisi, luokille kaikille jotain kirjoitettu. Pari testiä
