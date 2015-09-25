@@ -21,7 +21,7 @@ public class Ympyra extends Kuvio {
 
     @Override
     public void piirra(Graphics graphics) {
-        graphics.fillOval(super.getX(), super.getY(), halkaisija, halkaisija);
+        graphics.drawOval(super.getX(), super.getY(), halkaisija, halkaisija);
     }
 
 }

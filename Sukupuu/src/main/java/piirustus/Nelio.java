@@ -22,6 +22,6 @@ public class Nelio extends Kuvio {
 
     @Override
     public void piirra(Graphics graphics) {
-        graphics.fillRect(super.getX(), super.getY(), sivunPituus, sivunPituus);
+        graphics.drawRect(super.getX(), super.getY(), sivunPituus, sivunPituus);
     }
 }

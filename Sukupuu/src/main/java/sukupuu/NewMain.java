@@ -17,18 +17,23 @@ public class NewMain {
 
         Henkilo eka = new Henkilo("Maija");
         eka.setSukupuoli(Sukupuoli.NAINEN);
+        eka.setSukupolvi("I");
         ihmislista.add(eka);
         Henkilo toka = new Henkilo("Matti");
         toka.setSukupuoli(Sukupuoli.MIES);
+        toka.setSukupolvi("I");
         ihmislista.add(toka);
         Henkilo kolmas = new Henkilo("Sanna");
         kolmas.setSukupuoli(Sukupuoli.NAINEN);
+        kolmas.setSukupolvi("II");
         ihmislista.add(kolmas);
         Henkilo neljas = new Henkilo("Minna");
         neljas.setSukupuoli(Sukupuoli.NAINEN);
+        neljas.setSukupolvi("II");
         ihmislista.add(neljas);
         Henkilo viides = new Henkilo("Mika");
         viides.setSukupuoli(Sukupuoli.MIES);
+        viides.setSukupolvi("II");
         ihmislista.add(viides);
         
         eka.lisaaLapsi(viides);
@@ -118,6 +123,9 @@ public class NewMain {
         
         Piirustuslogiikka logic = new Piirustuslogiikka(ihmislista);
         ArrayList<Kuvio> kuviot = logic.piirraSukupuolet();     //"Muuttaa" henkilöt kuvioiksi
+        ArrayList<Kuvio> viivat = logic.piirraPuolisoilleViivat();
+        
+        kuviot.addAll(viivat);      //yhdistää aiemmat kaksi listaa
         
         PiirtoKayttoliittyma kayttis = new PiirtoKayttoliittyma(kuviot);        //Piirtää ne kuviot
         SwingUtilities.invokeLater(kayttis);

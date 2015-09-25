@@ -1,6 +1,7 @@
 package piirustus;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import sukupuu.Henkilo;
 import sukupuu.Sukupuoli;
 
@@ -14,9 +15,11 @@ public class Piirustuslogiikka {
     //Piirretäänkö kumpi kuvio, minne ja värillä vai ilman?
     //Saa ainakin listan henkilöitä
     private ArrayList<Henkilo> ihmiset;
+    private HashMap<String, Kuvio> henkiloKuviot;       
 
     public Piirustuslogiikka(ArrayList<Henkilo> ihmiset) {
         this.ihmiset = ihmiset;
+
     }
 
     //Muuttaa henkilön neliöksi tai ympyräksi sukupuolen perusteella, koordinaatit lasketaan muualla.
@@ -25,25 +28,29 @@ public class Piirustuslogiikka {
      * Metodi saa Piirustuslogiikka-luokan listan henkilöitä ja "muuttaa" ne
      * henkilöiden sukupuolen mukaan kuvioiksi jotka tallentaa uuteen listaan
      * jonka on luonut
+     *
      * @return lista kuvioita
      */
     public ArrayList<Kuvio> piirraSukupuolet() {
         ArrayList<Kuvio> kuviolista = new ArrayList<Kuvio>();
+        henkiloKuviot = new HashMap<>();        //Talteen henkilöön liittyvä kuvio
 
         for (Henkilo henkilo : ihmiset) {
             if (henkilo.getSukupuoli() == Sukupuoli.MIES) {
                 kuviolista.add(new Nelio(laskeX(henkilo), laskeY(henkilo), laskeKorkeus()));
+                henkiloKuviot.put(henkilo.getNimi(), (new Nelio(laskeX(henkilo), laskeY(henkilo), laskeKorkeus())));
             } else if (henkilo.getSukupuoli() == Sukupuoli.NAINEN) {
                 kuviolista.add(new Ympyra(laskeX(henkilo), laskeY(henkilo), laskeKorkeus()));
+                henkiloKuviot.put(henkilo.getNimi(), (new Nelio(laskeX(henkilo), laskeY(henkilo), laskeKorkeus())));
             } //else -> jos sukupuoli on "MUU"          TODO!
         }
 
         return kuviolista;
     }
 
-    //Laskee x-koordinaatin, vaiheessa!
+    //Laskee x-koordinaatin, vaiheessa! 
     /**
-     * 
+     *
      * @param henkilo
      * @return
      */
@@ -78,9 +85,9 @@ public class Piirustuslogiikka {
     public int laskeY(Henkilo henkilo) {
         int y = 0;
 
-        if (ihmiset.get(0) == henkilo || ihmiset.get(1) == henkilo) {
+        if ("I".equals(henkilo.getSukupolvi())) {
             y = 50;
-        } else {
+        } else if ("II".equals(henkilo.getSukupolvi())) {
             y = 200;
         }
 
@@ -97,5 +104,31 @@ public class Piirustuslogiikka {
 
         return (numero);
     }
+    //Viiva menee kuvion keskeltä kuvion keskelle nyt
+    public ArrayList<Kuvio> piirraPuolisoilleViivat() {
 
-}
+        ArrayList<Kuvio> viivat = new ArrayList<>();
+        for (Henkilo henkilo : ihmiset) {
+            if (henkilo.getPuoliso() != null) {
+                viivat.add(new Viiva(haeXKoordinaatti(henkilo), haeYKoordinaatti(henkilo), haeXKoordinaatti(henkilo.getPuoliso()), haeYKoordinaatti(henkilo.getPuoliso())));
+            }
+        }
+        return viivat;
+    }
+    
+    public int haeXKoordinaatti(Henkilo henkilo) {
+        int x = 0;
+        
+        x = henkiloKuviot.get(henkilo.getNimi()).getX();
+        x = x + (laskeKorkeus()/2);
+        return x;
+    }
+    
+    public int haeYKoordinaatti(Henkilo henkilo) {
+        int y = 0;
+        
+        y = henkiloKuviot.get(henkilo.getNimi()).getY();
+        y = y + (laskeKorkeus()/2);
+        return y; 
+    }
+} 

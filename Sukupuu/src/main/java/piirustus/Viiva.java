@@ -28,6 +28,7 @@ public class Viiva extends Kuvio {
 
     @Override
     public void piirra(Graphics graphics) {
+        
         graphics.drawLine(super.getX(), super.getY(), x2, y2);
     }
 
