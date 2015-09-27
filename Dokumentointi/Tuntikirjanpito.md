@@ -15,3 +15,4 @@
 - **23.09** 3h Parit metodit, GUI-Builderista lueskelua ja kokeilemista
 - **24.09** 2h JavaDoc: "minne se pitäisi kirjoittaa?!?" selvisi, luokille kaikille jotain kirjoitettu. Pari testiä
 - **25.09** 3h Yritetty tehdä testejä ja epäonnistuttu. Koodin epätoivoista räpellystä. Pit-raporttisysteemin lähes täydellinen sekoittaminen. Bonuksena kuva pdf-muodosta .png:ksi, onnistui vain print screenillä. Että miten meni omasta mielestä?
+- **27.09** 5h Paperille piirtelyä, NetBeansin näpyttelyä. Koordinaatteja ja viivoja logiikkaluokkaan.
