@@ -56,9 +56,9 @@ public class HenkiloTest {
 
     @Test
     public void sukupolviToimii() {
-        String sukupolvi = "sukupolvi";
+        int sukupolvi = 1;
         henkilo.setSukupolvi(sukupolvi);
-        assertEquals(sukupolvi, henkilo.getSukupolvi());
+        assertEquals(1, henkilo.getSukupolvi());
     }
 
     @Test

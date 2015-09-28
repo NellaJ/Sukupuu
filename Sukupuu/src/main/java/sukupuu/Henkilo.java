@@ -14,7 +14,7 @@ public class Henkilo {
     private int ika;
     private String sairaus;
     private boolean mutaationKantaja;
-    private String sukupolvi;
+    private int sukupolvi;
     private Sukupuoli sukupuoli;
     private List<Henkilo> lapset;
     private Henkilo puoliso;        //Puoliso tarkoittaa tässä yhteydessä lapsen toista vanhempaa
@@ -25,7 +25,7 @@ public class Henkilo {
         this.sairaus = "";
         this.mutaationKantaja = false;
         this.sukupuoli = Sukupuoli.MUU;
-        this.sukupolvi = "";
+        this.sukupolvi = -1;        //-1 tarkoittaa, ettei sukupolvi ole tiedossa
         this.nimi = nimi;
         this.lapset = new ArrayList<>();
 
@@ -38,7 +38,7 @@ public class Henkilo {
         this.sairaus = sairaus;
         this.mutaationKantaja = mutaationKantaja;
         this.sukupuoli = sukupuoli;
-        this.sukupolvi = "";
+        this.sukupolvi = -1;
         this.lapset = new ArrayList<>();
     }
 
@@ -124,11 +124,11 @@ public class Henkilo {
         return ika;
     }
 
-    public String getSukupolvi() {
+    public int getSukupolvi() {
         return sukupolvi;
     }
 
-    public void setSukupolvi(String sukupolvi) {
+    public void setSukupolvi(int sukupolvi) {
         this.sukupolvi = sukupolvi;
     }
 }

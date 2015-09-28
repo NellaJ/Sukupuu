@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 import piirustus.Kuvio;
 import piirustus.Nelio;
 import piirustus.Piirustuslogiikka;
+import piirustus.Ympyra;
 
 public class PiirustusLogiikkaTest {
 
@@ -18,25 +19,25 @@ public class PiirustusLogiikkaTest {
 
     @Before
     public void setUp() {
-        Henkilo mies = new Henkilo("M");
-        mies.setSukupuoli(Sukupuoli.MIES);
+        Henkilo mies = new Henkilo("M", 40, "Sairas", true, Sukupuoli.MIES);    //indeksi 0
+        mies.setSukupolvi(1);
         henkilot.add(mies);
-        Henkilo nainen = new Henkilo("N");
-        nainen.setSukupuoli(Sukupuoli.NAINEN);
+        Henkilo nainen = new Henkilo("N", 30, "Terve", false, Sukupuoli.NAINEN); //indeksi 1
+        nainen.setSukupolvi(1);
         henkilot.add(nainen);
         logiikka = new Piirustuslogiikka(henkilot);
         
     }
-
+    
     @Test
     public void miespuolinenNelioksi() {
-        //TODO, ei toimi vielä koordinaattimetodien takia
-     //   ArrayList<Kuvio> kuviot = logiikka.piirraSukupuolet();
-     //   assertTrue(kuviot.get(0) instanceof Nelio);
+       ArrayList<Kuvio> kuviot = logiikka.piirraKuviot();
+       assertTrue(kuviot.get(0) instanceof Nelio);
     }
     
     @Test
     public void naispuolinenMuuttuuYmpyraksi() {
-        //TODO
+        ArrayList<Kuvio> kuviot = logiikka.piirraKuviot();
+        assertTrue(kuviot.get(1) instanceof Ympyra);
     }
 }
