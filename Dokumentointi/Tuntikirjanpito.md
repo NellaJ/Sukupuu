@@ -17,3 +17,4 @@
 - **25.09** 3h Yritetty tehdä testejä ja epäonnistuttu. Koodin epätoivoista räpellystä. Pit-raporttisysteemin lähes täydellinen sekoittaminen. Bonuksena kuva pdf-muodosta .png:ksi, onnistui vain print screenillä. Että miten meni omasta mielestä?
 - **27.09** 5h Paperille piirtelyä, NetBeansin näpyttelyä. Koordinaatteja ja viivoja logiikkaluokkaan.
 - **28.09** 1,5h Koordinaatteja ja viivoja paremmin. Pari testiä.
+- **29.09** 1h Testien tekemisen yrittämistä. Koodin parantelun yrittämistä. Tulos olematon
