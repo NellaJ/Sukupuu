@@ -1,4 +1,4 @@
-package sukupuu;
+package piirustus;
 
 import java.util.ArrayList;
 import org.junit.After;
@@ -11,6 +11,8 @@ import piirustus.Kuvio;
 import piirustus.Nelio;
 import piirustus.Piirustuslogiikka;
 import piirustus.Ympyra;
+import sukupuu.Henkilo;
+import sukupuu.Sukupuoli;
 
 public class PiirustusLogiikkaTest {
 
@@ -26,18 +28,20 @@ public class PiirustusLogiikkaTest {
         nainen.setSukupolvi(1);
         henkilot.add(nainen);
         logiikka = new Piirustuslogiikka(henkilot);
-        
+
     }
-    
+
     @Test
     public void miespuolinenNelioksi() {
-       ArrayList<Kuvio> kuviot = logiikka.piirraKuviot();
-       assertTrue(kuviot.get(0) instanceof Nelio);
+        ArrayList<Kuvio> kuviot = logiikka.piirraKuviot();
+        assertTrue(kuviot.get(0) instanceof Nelio);
     }
-    
+
     @Test
     public void naispuolinenMuuttuuYmpyraksi() {
         ArrayList<Kuvio> kuviot = logiikka.piirraKuviot();
         assertTrue(kuviot.get(1) instanceof Ympyra);
     }
+
+   
 }
