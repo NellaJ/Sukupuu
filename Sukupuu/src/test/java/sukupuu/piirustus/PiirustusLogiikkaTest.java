@@ -1,4 +1,4 @@
-package piirustus;
+package sukupuu.piirustus;
 
 import java.util.ArrayList;
 import org.junit.After;
@@ -7,12 +7,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import piirustus.Kuvio;
-import piirustus.Nelio;
-import piirustus.Piirustuslogiikka;
-import piirustus.Ympyra;
-import sukupuu.Henkilo;
-import sukupuu.Sukupuoli;
+import sukupuu.piirustus.Kuvio;
+import sukupuu.piirustus.Nelio;
+import sukupuu.piirustus.Piirustuslogiikka;
+import sukupuu.piirustus.Ympyra;
+import sukupuu.sukupuu.Henkilo;
+import sukupuu.sukupuu.Sukupuoli;
 
 public class PiirustusLogiikkaTest {
 

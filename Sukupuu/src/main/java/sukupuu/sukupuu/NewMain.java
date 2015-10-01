@@ -1,11 +1,11 @@
-package sukupuu;
+package sukupuu.sukupuu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
-import piirustus.Kuvio;
-import piirustus.PiirtoKayttoliittyma;
-import piirustus.Piirustuslogiikka;
+import sukupuu.piirustus.Kuvio;
+import sukupuu.piirustus.PiirtoKayttoliittyma;
+import sukupuu.piirustus.Piirustuslogiikka;
 
 public class NewMain {
 

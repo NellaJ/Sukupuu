@@ -1,4 +1,4 @@
-package sukupuu;
+package sukupuu.sukupuu;
 
 /**
  * Luokka sisältää kolme vaihtoehtoa sukupuoleksi

@@ -1,9 +1,9 @@
-package piirustus;
+package sukupuu.piirustus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import sukupuu.Henkilo;
-import sukupuu.Sukupuoli;
+import sukupuu.sukupuu.Henkilo;
+import sukupuu.sukupuu.Sukupuoli;
 
 /**
  * Luokka sisältää logiikan jonka mukaan eri kuviot piirretään Luokka saa

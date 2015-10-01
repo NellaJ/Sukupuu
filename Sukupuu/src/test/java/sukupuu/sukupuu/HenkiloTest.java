@@ -1,4 +1,4 @@
-package sukupuu;
+package sukupuu.sukupuu;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import sukupuu.Henkilo;
-import sukupuu.Sukupuoli;
+import sukupuu.sukupuu.Henkilo;
+import sukupuu.sukupuu.Sukupuoli;
 
 public class HenkiloTest {
 

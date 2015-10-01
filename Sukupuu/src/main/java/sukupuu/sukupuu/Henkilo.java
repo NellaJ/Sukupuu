@@ -1,4 +1,4 @@
-package sukupuu;
+package sukupuu.sukupuu;
 
 import java.util.ArrayList;
 import java.util.List;

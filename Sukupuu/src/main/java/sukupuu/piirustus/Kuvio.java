@@ -1,4 +1,4 @@
-package piirustus;
+package sukupuu.piirustus;
 
 import java.awt.Graphics;
 
