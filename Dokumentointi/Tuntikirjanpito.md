@@ -19,3 +19,4 @@
 - **28.09** 1,5h Koordinaatteja ja viivoja paremmin. Pari testiä.
 - **29.09** 1h Testien tekemisen yrittämistä. Koodin parantelun yrittämistä. Tulos olematon
 - **30.09** 3,5h Graafista käyttöliittymää tehty. Logiikkaa paranneltu reilusti.
+- **01.10** 3h Pit-testit saatettu toimintakuntoon. Logiikkaan pientä siistimistä. Testejä taas yritetty. 
