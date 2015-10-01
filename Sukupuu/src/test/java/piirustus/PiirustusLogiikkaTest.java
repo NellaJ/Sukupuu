@@ -43,5 +43,22 @@ public class PiirustusLogiikkaTest {
         assertTrue(kuviot.get(1) instanceof Ympyra);
     }
 
+    @Test
+    public void kuvioLisataanListaan() {
+        logiikka.keraaSukupolvet();
+        assertTrue(logiikka.getKuviolista().size() > 0);
+    }
+
+    @Test
+    public void kuvioLisataanHashmapiin() {
+        logiikka.keraaSukupolvet();
+        assertTrue(logiikka.getHenkilonKuvio().size() > 0);
+    }
+
+    @Test
+    public void sukupolvenMukaanOikeaYKoordinaatti() {
+        logiikka.keraaSukupolvet();
+        assertEquals(logiikka.getHenkilonKuvio().get(henkilot.get(1).getNimi()).getY(), logiikka.laskeY(henkilot.get(1)));
+    }
    
 }
