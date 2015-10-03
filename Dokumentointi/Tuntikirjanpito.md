@@ -20,3 +20,4 @@
 - **29.09** 1h Testien tekemisen yrittämistä. Koodin parantelun yrittämistä. Tulos olematon
 - **30.09** 3,5h Graafista käyttöliittymää tehty. Logiikkaa paranneltu reilusti.
 - **01.10** 3h Pit-testit saatettu toimintakuntoon. Logiikkaan pientä siistimistä. Testejä taas yritetty. 
+- **03.10** 4h Kuvioille väriä pintaan. Muutama testi. Graafiset jutut, tapahtuman käsittelyt, kaikenlaista kokeilua. Jotain ehkä opittukin. Google (ja ohja-materiaalit) on ystävä.
