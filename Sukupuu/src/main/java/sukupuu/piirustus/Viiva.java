@@ -32,4 +32,9 @@ public class Viiva extends Kuvio {
         graphics.drawLine(super.getX(), super.getY(), x2, y2);
     }
 
+    @Override
+    public void varita(Graphics graphics) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
