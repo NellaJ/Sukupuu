@@ -97,6 +97,7 @@ public class Piirustuslogiikka {
      */
     public Nelio teeNelio(Henkilo henkilo, int indeksi) {
         Nelio nelio = new Nelio(laskeX(indeksi), laskeY(henkilo), laskeKorkeus());
+        variKuviolle(henkilo, nelio);
         return nelio;
     }
 
@@ -110,6 +111,7 @@ public class Piirustuslogiikka {
      */
     public Ympyra teeYmpyra(Henkilo henkilo, int indeksi) {
         Ympyra ympyra = new Ympyra(laskeX(indeksi), laskeY(henkilo), laskeKorkeus());
+        variKuviolle(henkilo, ympyra);
         return ympyra;
     }
 
@@ -326,6 +328,12 @@ public class Piirustuslogiikka {
      */
     public void lisaaKuvioListaan(ArrayList<Kuvio> kuviot) {
         kuviolista.addAll(kuviot);
+    }
+
+    public void variKuviolle(Henkilo henkilo, Kuvio kuvio) {
+        if (henkilo.isMutaationKantaja() == true) {
+            kuvio.setVari(true);
+        }
     }
 
 }
