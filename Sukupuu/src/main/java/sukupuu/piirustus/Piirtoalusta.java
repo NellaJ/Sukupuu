@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Shape;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -27,11 +28,16 @@ public class Piirtoalusta extends JPanel {
     protected void paintComponent(Graphics graphics) {
         Graphics2D graphics2 = (Graphics2D) graphics;
         super.paintComponent(graphics2);
-        graphics2.setStroke(new BasicStroke(2));
+        graphics2.setStroke(new BasicStroke(3));
 
         for (Kuvio kuvio : kuviot) {
+            graphics2.setPaint(Color.BLACK);
             kuvio.piirra(graphics2);
-            // graphics.setColor(Color.WHITE);   //Tällä saa värin muutettua. On tosin väärässä kohdassa (muuttaa vain jälkimmäisten värit)
+            
+            if (kuvio.isVari() == true) {
+                graphics2.setPaint(Color.RED);
+                kuvio.varita(graphics);
+            }
         }
     }
 
