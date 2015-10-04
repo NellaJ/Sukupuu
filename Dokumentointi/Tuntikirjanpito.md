@@ -21,3 +21,4 @@
 - **30.09** 3,5h Graafista käyttöliittymää tehty. Logiikkaa paranneltu reilusti.
 - **01.10** 3h Pit-testit saatettu toimintakuntoon. Logiikkaan pientä siistimistä. Testejä taas yritetty. 
 - **03.10** 4h Kuvioille väriä pintaan. Muutama testi. Graafiset jutut, tapahtuman käsittelyt, kaikenlaista kokeilua. Jotain ehkä opittukin. Google (ja ohja-materiaalit) on ystävä.
+- **04.10** 3h Yritetty saada graafinen käyttöliittymä toimimaan niin, että sieltä saisi jotain uloskin. Googletettu armottomasti ja kokeiltu ties kuinka monia keinoja. Ei mikään onnistu. Graafinen käyttöliittymä edelleen siis täysin hyödytön.
