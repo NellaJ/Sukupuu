@@ -1,5 +1,6 @@
 package sukupuu.sukupuu;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,7 +16,9 @@ public class HenkiloTest {
 
     @Before
     public void setUp() {
-        henkilo = new Henkilo("nimi", 40, "sairas", true, Sukupuoli.MIES);
+        ArrayList<String> mutaatiot = new ArrayList<String>();
+        mutaatiot.add("Mutaatio");
+        henkilo = new Henkilo("nimi", 40, true, mutaatiot, Sukupuoli.MIES);
     }
 
     @Test
@@ -31,12 +34,12 @@ public class HenkiloTest {
 
     @Test
     public void konstruktoriLaittaaSairaudenOikein() {
-        assertEquals("sairas", henkilo.getSairaus());
+        assertEquals(true, henkilo.isSairas());
     }
 
     @Test
     public void konstruktoriLaittaaMutaationOikein() {
-        assertEquals(true, henkilo.isMutaationKantaja());
+        assertEquals("Mutaatio", henkilo.getMutaatiot().get(0));
     }
 
     @Test
@@ -49,8 +52,8 @@ public class HenkiloTest {
         Henkilo henkiloUusi = new Henkilo("nimi");
         assertEquals("nimi", henkiloUusi.getNimi());
         assertEquals(0, henkiloUusi.getIka());
-        assertEquals("", henkiloUusi.getSairaus());
-        assertEquals(false, henkiloUusi.isMutaationKantaja());
+        assertEquals(false, henkiloUusi.isSairas());
+        assertTrue(henkiloUusi.getMutaatiot().isEmpty());
         assertEquals(Sukupuoli.MUU, henkiloUusi.getSukupuoli());
     }
 
