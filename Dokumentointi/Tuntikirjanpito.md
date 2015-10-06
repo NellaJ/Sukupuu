@@ -22,3 +22,4 @@
 - **01.10** 3h Pit-testit saatettu toimintakuntoon. Logiikkaan pientä siistimistä. Testejä taas yritetty. 
 - **03.10** 4h Kuvioille väriä pintaan. Muutama testi. Graafiset jutut, tapahtuman käsittelyt, kaikenlaista kokeilua. Jotain ehkä opittukin. Google (ja ohja-materiaalit) on ystävä.
 - **04.10** 3h Yritetty saada graafinen käyttöliittymä toimimaan niin, että sieltä saisi jotain uloskin. Googletettu armottomasti ja kokeiltu ties kuinka monia keinoja. Ei mikään onnistu. Graafinen käyttöliittymä edelleen siis täysin hyödytön.
+- **0510**  2h Graafisen käyttöliittymän ongelmista jauhaminen tuotti tulosta ja (yllättävänkin ilmiselvä) ratkaisu ongelmaan löytyi yllättäen Facebookista! Graafinen käyttöliittymä sai nyt toimintaa sisälleen ja suoltamaan sisältönsä ohjelmassa eteenpäin. Jee!
