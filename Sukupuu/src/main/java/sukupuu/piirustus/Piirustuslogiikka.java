@@ -331,7 +331,7 @@ public class Piirustuslogiikka {
     }
 
     public void variKuviolle(Henkilo henkilo, Kuvio kuvio) {
-        if (henkilo.isMutaationKantaja() == true) {
+        if (henkilo.isSairas()== true) {
             kuvio.setVari(true);
         }
     }
