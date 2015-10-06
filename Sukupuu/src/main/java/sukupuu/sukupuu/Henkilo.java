@@ -12,8 +12,8 @@ public class Henkilo {
     //Muuttujat mutaationKantaja, sairaus ja sukupolvi luultavasti muuttuvat vielä (listoiksi tms.)
     private String nimi;
     private int ika;
-    private String sairaus;
-    private boolean mutaationKantaja;
+    private boolean sairas;
+    private List<String> mutaatiot;
     private int sukupolvi;
     private Sukupuoli sukupuoli;
     private List<Henkilo> lapset;
@@ -22,8 +22,8 @@ public class Henkilo {
     //Henkilön minimiparametrina nimi.
     public Henkilo(String nimi) {
         this.ika = 0;
-        this.sairaus = "";
-        this.mutaationKantaja = false;
+        this.sairas = false;
+        this.mutaatiot = new ArrayList<>();
         this.sukupuoli = Sukupuoli.MUU;
         this.sukupolvi = -1;        //-1 tarkoittaa, ettei sukupolvi ole tiedossa
         this.nimi = nimi;
@@ -32,11 +32,11 @@ public class Henkilo {
     }
 
     //Toisena konstruktorina annetaan enemmän muuttujia 
-    public Henkilo(String nimi, int ika, String sairaus, boolean mutaationKantaja, Sukupuoli sukupuoli) {
+    public Henkilo(String nimi, int ika, boolean sairaus, List<String> mutaatiot, Sukupuoli sukupuoli) {
         this.nimi = nimi;
         this.ika = ika;
-        this.sairaus = sairaus;
-        this.mutaationKantaja = mutaationKantaja;
+        this.sairas = sairaus;
+        this.mutaatiot = mutaatiot;
         this.sukupuoli = sukupuoli;
         this.sukupolvi = -1;
         this.lapset = new ArrayList<>();
@@ -83,7 +83,7 @@ public class Henkilo {
     //Tämä poistuu/muokkaantuu myöhemmin
     @Override
     public String toString() {
-        System.out.println("Henkilö " + this.nimi + " " + this.ika + " vuotta." + "Kantaa mutaatiota? " + this.mutaationKantaja + " Sukupuoli: " + this.sukupuoli);
+        System.out.println("Henkilö " + this.nimi + " " + this.ika + " vuotta." + " Sukupuoli: " + this.sukupuoli);
         return super.toString();
     }
 
@@ -95,22 +95,22 @@ public class Henkilo {
         return sukupuoli;
     }
 
-    public String getSairaus() {
-        return sairaus;
+    public boolean isSairas() {
+        return sairas;
     }
 
-    public void setSairaus(String sairaus) {
-        this.sairaus = sairaus;
+    public void setSairaus(boolean sairaus) {
+        this.sairas = sairaus;
     }
 
-    public void setMutaationKantaja(boolean mutaationKantaja) {
-        this.mutaationKantaja = mutaationKantaja;
+    public List<String> getMutaatiot() {
+        return mutaatiot;
     }
 
-    public boolean isMutaationKantaja() {
-        return mutaationKantaja;
+    public void lisaaMutaatio(String mutaatio) {
+        this.mutaatiot.add(mutaatio);
     }
-
+ 
     //Ikä ei saa olla negatiivinen
     public void setIka(int ika) {
         if (ika >= 0 && ika <= 150) {
