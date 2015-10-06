@@ -14,8 +14,12 @@ public class NewMain {
     //Tämä vaihe tulee varmasti graafiseen käyttöliittymään lopulta
     public static void main(String[] args) {
         ArrayList<Henkilo> ihmislista = new ArrayList<>();
+        String mut = "FKRP+";
+        ArrayList<String> mutaatio = new ArrayList<>();
+        mutaatio.add(mut);
+        ArrayList<String> eiMut = new ArrayList<>();
 
-        Henkilo eka = new Henkilo("Isä", 68, "terve", false, Sukupuoli.MIES);
+        Henkilo eka = new Henkilo("Isä", 68, false, eiMut, Sukupuoli.MIES);
         eka.setSukupolvi(1);
         eka.lisaaLapsi(new Henkilo("Neljäs"));
         eka.lisaaLapsi(new Henkilo("Kuudes"));
@@ -23,7 +27,7 @@ public class NewMain {
         eka.lisaaLapsi(new Henkilo("Kasi"));
         eka.setPuoliso(new Henkilo("Äiti"));
         ihmislista.add(eka);
-        Henkilo toka = new Henkilo("Äiti", 65, "Sairas", true, Sukupuoli.NAINEN);
+        Henkilo toka = new Henkilo("Äiti", 65, true, mutaatio, Sukupuoli.NAINEN);
         toka.setSukupolvi(1);
         toka.lisaaLapsi(new Henkilo("Neljäs"));
         toka.lisaaLapsi(new Henkilo("Kuudes"));
@@ -31,39 +35,39 @@ public class NewMain {
         toka.lisaaLapsi(new Henkilo("Kasi"));
         toka.setPuoliso(eka);
         ihmislista.add(toka);
-        Henkilo kolmas = new Henkilo("Kolmas", 70, "Sairas", true, Sukupuoli.NAINEN);
+        Henkilo kolmas = new Henkilo("Kolmas", 70, true, mutaatio, Sukupuoli.NAINEN);
         kolmas.setSukupolvi(1);
         ihmislista.add(kolmas);
-        Henkilo neljas = new Henkilo("Neljäs", 35, "Terve", false, Sukupuoli.NAINEN);
+        Henkilo neljas = new Henkilo("Neljäs", 35, false, mutaatio, Sukupuoli.NAINEN);
         neljas.setSukupolvi(2);
         ihmislista.add(neljas);
-        Henkilo viides = new Henkilo("Viides", 40, "Terve", false, Sukupuoli.MIES);
+        Henkilo viides = new Henkilo("Viides", 40, false, eiMut, Sukupuoli.MIES);
         viides.setSukupolvi(2);
         viides.lisaaLapsi(new Henkilo("Ysi"));
         viides.lisaaLapsi(new Henkilo("Kymppi"));
         viides.lisaaLapsi(new Henkilo ("Yksitoista"));
         viides.setPuoliso(new Henkilo ("Kuudes"));
         ihmislista.add(viides);
-        Henkilo kuudes = new Henkilo("Kuudes", 45, "Sairas", true, Sukupuoli.NAINEN);
+        Henkilo kuudes = new Henkilo("Kuudes", 45, true, mutaatio, Sukupuoli.NAINEN);
         kuudes.setSukupolvi(2);
         kuudes.lisaaLapsi(new Henkilo("Ysi"));
         kuudes.lisaaLapsi(new Henkilo("Kymppi"));
         kuudes.lisaaLapsi(new Henkilo ("Yksitoista"));
         kuudes.setPuoliso(viides);
         ihmislista.add(kuudes);
-        Henkilo seiska = new Henkilo("Seiska", 47, "Terve", false, Sukupuoli.NAINEN);
+        Henkilo seiska = new Henkilo("Seiska", 47, false, eiMut, Sukupuoli.NAINEN);
         seiska.setSukupolvi(2);
         ihmislista.add(seiska);
-        Henkilo kasi = new Henkilo("Kasi", 49, "Terve", false, Sukupuoli.MIES);
+        Henkilo kasi = new Henkilo("Kasi", 49, false, mutaatio, Sukupuoli.MIES);
         kasi.setSukupolvi(2);
         ihmislista.add(kasi);
-        Henkilo ysi = new Henkilo("Ysi", 10, "Terve", false, Sukupuoli.NAINEN);
+        Henkilo ysi = new Henkilo("Ysi", 10, false, eiMut, Sukupuoli.NAINEN);
         ysi.setSukupolvi(3);
         ihmislista.add(ysi);
-        Henkilo kymppi = new Henkilo("Kymppi", 15, "Terve", false, Sukupuoli.NAINEN);
+        Henkilo kymppi = new Henkilo("Kymppi", 15, false, mutaatio, Sukupuoli.NAINEN);
         kymppi.setSukupolvi(3);
         ihmislista.add(kymppi);
-        Henkilo yksitoista = new Henkilo("Yksitoista", 20, "Terve", false, Sukupuoli.MIES);
+        Henkilo yksitoista = new Henkilo("Yksitoista", 20, false, mutaatio, Sukupuoli.MIES);
         yksitoista.setSukupolvi(3);
         ihmislista.add(yksitoista);
        
