@@ -6,7 +6,7 @@
 package sukupuu.main;
 
 import java.util.ArrayList;
-import sukupuu.GraafinenKayttis.EnsimmainenSukupolvi;
+import sukupuu.GraafinenKayttis.Graafinen;
 import sukupuu.sukupuu.Henkilo;
 
 /**
@@ -23,7 +23,7 @@ public class NewMain {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EnsimmainenSukupolvi().setVisible(true);
+                new Graafinen().setVisible(true);
             }
         });
 
