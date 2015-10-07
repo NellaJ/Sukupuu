@@ -27,14 +27,14 @@ public class Graafinen extends javax.swing.JFrame {
     private ArrayList<Henkilo> ihmislista;
     private Sukupuoli sukupuoli;
     private boolean sairas;
-    
+    private int sukupolvi;
+
     public Graafinen() {
         this.ihmislista = new ArrayList<Henkilo>();
+        this.sukupolvi = 1;
         initComponents();
-        
-    }
 
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,6 +45,8 @@ public class Graafinen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -114,6 +116,7 @@ public class Graafinen extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Mies");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +124,7 @@ public class Graafinen extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Nainen");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +132,7 @@ public class Graafinen extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("Muu");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +151,7 @@ public class Graafinen extends javax.swing.JFrame {
 
         jLabel13.setText("Sairas");
 
+        buttonGroup2.add(jRadioButton4);
         jRadioButton4.setText("Sairas");
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +159,7 @@ public class Graafinen extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup2.add(jRadioButton5);
         jRadioButton5.setText("Terve");
         jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -453,7 +460,6 @@ public class Graafinen extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here: VALMIS-NAPPI
-        ihmislista.toString();
         tiedotEteenpain();
         System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -478,13 +484,14 @@ public class Graafinen extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here: Lisää uusi henkilö-nappi
         tyhjenna();
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here: LISÄÄ SEURAAVA SUKUPOLVI-NAPPI
         tyhjenna();
-        jTextField11.setText("");    
+        this.sukupolvi = sukupolvi + 1;
+        jTextField11.setText(String.valueOf(this.sukupolvi));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
@@ -549,6 +556,8 @@ public class Graafinen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -593,12 +602,21 @@ public class Graafinen extends javax.swing.JFrame {
         int ika = Integer.parseInt(jTextField2.getText());
         ArrayList<String> mutaatiot = new ArrayList<String>();
         mutaatiot.add(jTextField4.getText());
-       Henkilo henkilo = new Henkilo(nimi, ika, this.sairas, mutaatiot, this.sukupuoli);
-       henkilo.setSukupolvi(Integer.parseInt(jTextField11.getText()));
-       henkilo.setPuoliso(haePuoliso());
-       henkilo.lisaaLapsi(lisaaLapset());   //vain yhdelle lapselle nyt
+        Henkilo henkilo = new Henkilo(nimi, ika, this.sairas, mutaatiot, this.sukupuoli);
+        henkilo.setSukupolvi(Integer.parseInt(jTextField11.getText()));
+        if (haePuoliso() != null) {
+            henkilo.setPuoliso(haePuoliso());
+        }
+
+        for (String lapsenNimi : haeLapset()) {
+            if (haeLapset().size() != 0) {
+                henkilo.lisaaLapsi(new Henkilo(lapsenNimi));
+            }
+        }
+
         lisaaHenkiloListaan(henkilo);
     }
+
     public void lisaaHenkiloListaan(Henkilo henkilo) {
         ihmislista.add(henkilo);
     }
@@ -619,18 +637,47 @@ public class Graafinen extends javax.swing.JFrame {
         jTextField5.setText("");
         jTextField6.setText("");
         jTextField7.setText("");
+        jTextField8.setText("");
+        jTextField9.setText("");
+        jTextField10.setText("");
     }
 
     public Henkilo haePuoliso() {
         String nimi = jTextField3.getText();
-        return new Henkilo(nimi);
+        if (nimi.length() >= 1) {
+            return new Henkilo(nimi);
+        } else {
+        return null;
+        }
     }
 
-    public Henkilo lisaaLapset() {
+    public ArrayList<String> haeLapset() {
+        ArrayList<String> lapset = new ArrayList<String>();
         String nimi1 = jTextField5.getText();
-        return new Henkilo(nimi1);
+        if (nimi1.length() >= 1) {
+            lapset.add(nimi1);
+        }
+        String nimi2 = jTextField6.getText();
+        if (nimi2.length() >= 1) {
+            lapset.add(nimi2);
+        }
+        String nimi3 = jTextField7.getText();
+        if (nimi3.length() >= 1) {
+            lapset.add(nimi3);
+        }
+        String nimi4 = jTextField8.getText();
+        if (nimi4.length() >= 1) {
+            lapset.add(nimi4);
+        }
+        String nimi5 = jTextField9.getText();
+        if (nimi5.length() >= 1) {
+            lapset.add(nimi5);
+        }
+        String nimi6 = jTextField10.getText();
+        if (nimi6.length() >= 1) {
+            lapset.add(nimi6);
+        }
+        return lapset;
     }
 
-    
-    
 }
