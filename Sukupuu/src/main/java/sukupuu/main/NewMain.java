@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sukupuu.main;
 
 import java.util.ArrayList;
 import sukupuu.GraafinenKayttis.Graafinen;
 import sukupuu.sukupuu.Henkilo;
 
-/**
- *
- * @author Hourula
- */
+
 public class NewMain {
 
     /**

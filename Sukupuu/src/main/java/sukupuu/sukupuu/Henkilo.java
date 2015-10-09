@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class Henkilo {
 
-    //Muuttujat mutaationKantaja, sairaus ja sukupolvi luultavasti muuttuvat vielä (listoiksi tms.)
     private String nimi;
     private int ika;
     private boolean sairas;
@@ -19,7 +18,6 @@ public class Henkilo {
     private List<Henkilo> lapset;
     private Henkilo puoliso;        //Puoliso tarkoittaa tässä yhteydessä lapsen toista vanhempaa
 
-    //Henkilön minimiparametrina nimi.
     public Henkilo(String nimi) {
         this.ika = 0;
         this.sairas = false;
@@ -28,22 +26,18 @@ public class Henkilo {
         this.sukupolvi = -1;        //-1 tarkoittaa, ettei sukupolvi ole tiedossa
         this.nimi = nimi;
         this.lapset = new ArrayList<>();
-
     }
 
-    //Toisena konstruktorina annetaan enemmän muuttujia 
-    public Henkilo(String nimi, int ika, boolean sairaus, List<String> mutaatiot, Sukupuoli sukupuoli) {
+    public Henkilo(String nimi, int ika, boolean sairas, List<String> mutaatiot, Sukupuoli sukupuoli) {
         this.nimi = nimi;
         this.ika = ika;
-        this.sairas = sairaus;
+        this.sairas = sairas;
         this.mutaatiot = mutaatiot;
         this.sukupuoli = sukupuoli;
         this.sukupolvi = -1;
         this.lapset = new ArrayList<>();
     }
 
-    //Luo listan, jonne voidaan lisätä henkilön lapset. Lapsia ei välttämättä ole!
-    //Pitäisikö jälkeläinen luoda tässä ensin? Jos ko. henkilöä ei ole vielä luotu missään?
     /**
      * Konstruktorissa luotuun listaan voidaan lisätä henkilön jälkeläiset.
      * @param jalkelainen Käyttäjän syöttämä henkilö
@@ -56,8 +50,6 @@ public class Henkilo {
         return lapset;
     }
 
-    //Asettaa puolison, puolisoa ei välttämättä ole!
-    //Pitääkö puoliso luoda ensin tässä?
     /**
      * Henkilölle voidaan lisätä puoliso Puoliso tarkoittaa tässä henkilöä,
      * jonka kanssa on yhteinen jälkeläinen
@@ -83,7 +75,7 @@ public class Henkilo {
     //Tämä poistuu/muokkaantuu myöhemmin
     @Override
     public String toString() {
-        System.out.println("Henkilö " + this.nimi + " " + this.ika + " vuotta." + " Sukupuoli: " + this.sukupuoli);
+        System.out.println("Henkilö " + this.nimi + " " + this.ika + " vuotta." + " Sukupuoli: " + this.sukupuoli + " Onko sairas?: " + this.sairas);
         return super.toString();
     }
 
@@ -95,12 +87,12 @@ public class Henkilo {
         return sukupuoli;
     }
 
-    public boolean isSairas() {
+    public boolean onkoSairas() {
         return sairas;
     }
 
-    public void setSairaus(boolean sairaus) {
-        this.sairas = sairaus;
+    public void setSairaus(boolean sairas) {
+        this.sairas = sairas;
     }
 
     public List<String> getMutaatiot() {
@@ -110,7 +102,7 @@ public class Henkilo {
     public void lisaaMutaatio(String mutaatio) {
         this.mutaatiot.add(mutaatio);
     }
- 
+
     //Ikä ei saa olla negatiivinen
     public void setIka(int ika) {
         if (ika >= 0 && ika <= 150) {

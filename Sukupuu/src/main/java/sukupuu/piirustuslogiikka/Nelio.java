@@ -1,11 +1,11 @@
-package sukupuu.piirustus;
+package sukupuu.piirustuslogiikka;
 
 import java.awt.Graphics;
 
 /**
  * Nelio-luokka joka perii luokan Kuvio Luokka perii Kuvio-luokalta x- ja
  * y-koordinaatin ja piirra-metodin lisäksi Nelio-luokalla on muuttuja
- * sivunPituus
+ * sivunPituus ja vari
  */
 public class Nelio extends Kuvio {
 
@@ -22,11 +22,19 @@ public class Nelio extends Kuvio {
         return sivunPituus;
     }
 
+    /**
+     * Värittää neliön
+     * @param graphics
+     */
     @Override
     public void varita(Graphics graphics) {
         graphics.fillRect(super.getX(), super.getY(), sivunPituus, sivunPituus);
     }
     
+    /**
+     * Piirtää neliön
+     * @param graphics
+     */
     @Override
     public void piirra(Graphics graphics) {
         graphics.drawRect(super.getX(), super.getY(), sivunPituus, sivunPituus);

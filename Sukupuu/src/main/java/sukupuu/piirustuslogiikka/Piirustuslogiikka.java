@@ -1,4 +1,4 @@
-package sukupuu.piirustus;
+package sukupuu.piirustuslogiikka;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,12 +6,14 @@ import sukupuu.sukupuu.Henkilo;
 import sukupuu.sukupuu.Sukupuoli;
 
 /**
- * Luokka sisältää logiikan jonka mukaan eri kuviot piirretään Luokka saa
- * syötteenä listan henkilöitä
+ * Luokka sisältää logiikan jonka mukaan eri kuviot piirretään: mikä kuvio,
+ * sille koordinaatit ja värillä vai ilman. Luokka saa syötteenä listan
+ * henkilöitä: ArrayList ihmiset. Lisäksi luodaan ArrayList kuviolista, jonne
+ * luodut kuviot talletetaan sekä HashMap henkilonKuvio, johon tallentuu sekä
+ * Henkilön nimi että henkilöön liittyvä kuvio
  */
 public class Piirustuslogiikka {
 
-    //Piirretäänkö kumpi kuvio, minne ja värillä vai ilman?
     private ArrayList<Henkilo> ihmiset;
     private HashMap<String, Kuvio> henkilonKuvio;
     private ArrayList<Kuvio> kuviolista;
@@ -22,13 +24,11 @@ public class Piirustuslogiikka {
         this.henkilonKuvio = new HashMap<>();        //Talteen henkilöön liittyvä kuvio
     }
 
-    //Muuttaa henkilön neliöksi tai ympyräksi sukupuolen perusteella, koordinaatit lasketaan muualla.
-    //Palauttaa listan kuvioita
     /**
-     * Metodi saa Piirustuslogiikka-luokan listan henkilöitä ja "muuttaa" ne
-     * henkilöiden sukupuolen mukaan kuvioiksi jotka tallentaa uuteen listaan
+     * Metodi kutsuu kolmea muuta metodia, jotka luovat kaikki tarvittavat
+     * kuviot.
      *
-     * @return lista kuvioita
+     * @return kuviolista lista kuvioita
      */
     public ArrayList<Kuvio> piirraKuviot() {
 
@@ -39,15 +39,15 @@ public class Piirustuslogiikka {
         return kuviolista;
     }
 
-    //Lisää ihmiset sukupolven mukaan listalle ja sukupolven sisältävä ihmislista muutetaan kuvioiksi
     /**
-     * Käy listan henkilöitä while-loopissa niin monta kertaa mikä on listan
-     * koko. Apumuuttuja a alkaa numerolla 1. Kierroksen alussa tehdään uusi
-     * lista. Joka kierroksella for-luuppi käy henkilö-listan läpi ja jos
+     * Käy läpi listan henkilöitä while-loopissa niin monta kertaa mikä on
+     * listan koko. Apumuuttuja a alkaa numerolla 1. Kierroksen alussa tehdään
+     * uusi lista. Joka kierroksella for-luuppi käy henkilö-listan läpi ja jos
      * henkilön sukupolvi on sama kuin apumuuttuja, henkilö lisätään listaan.
-     * Kun henkilöt on käyty läpi, kutsutaan metodia muutaSukupuolet, joka
-     * "muuttaa" henkilöt kuvioiksi Eli joka kierroksella luodaan uusi lista,
-     * johon laitetaan kaikki samaan sukupolveen kuuluvat henkilöt.
+     * Kun henkilöt on käyty läpi, kutsutaan metodia muutaSukupuolet, jolle
+     * lista yhden sukupolven henkilöistä, joka "muuttaa" henkilöt kuvioiksi Eli
+     * joka kierroksella luodaan uusi lista, johon laitetaan kaikki samaan
+     * sukupolveen kuuluvat henkilöt.
      */
     public void keraaSukupolvet() {
 
@@ -64,10 +64,10 @@ public class Piirustuslogiikka {
         }
     }
 
-    //X-koordinaatit voisi laskea paremmin. Saa listan jossa koko sukupolvi, käy läpi ihmiset, tekee kuvion ja lisää sen kuviolistaan
+    //X-koordinaatit voisi laskea paremmin? TODO: "MUU"
     /**
      * Saa listan, jossa on saman sukupolven henkilöt. Lista käydään läpi ja jos
-     * henkilö on mies, tehdään metodin avulla uusi henkilö, joka lisätään
+     * henkilö on mies, tehdään metodin avulla uusi neliö, joka lisätään
      * henkilön nimen kanssa HashMapiin ja luotu kuvio myös listaan. Jos henkilö
      * on nainen, tehdään samoin mutta tuloksena on uusi ympyrä.
      *
@@ -89,7 +89,8 @@ public class Piirustuslogiikka {
 
     /**
      * Metodi luo uuden neliön. Neliön parametrit saadaan kutsumalla kolmea
-     * muuta metodia
+     * muuta metodia. Kutsuu lisäksi yhtä metodia, jolle annetaan parametreiksi
+     * henkilö ja luotu neliö. Kuvion värittämiseksi.
      *
      * @param henkilo
      * @param indeksi eli henkilön indeksi sukupolvi-listassa
@@ -103,7 +104,7 @@ public class Piirustuslogiikka {
 
     /**
      * Metodi luo uuden ympyrän. Ympyrän parametrit saadaan kutsumalla kolmea
-     * muuta metodia
+     * muuta metodia. Kutsuu lisäksi metodia kuvion värittämiseen
      *
      * @param henkilo
      * @param indeksi
@@ -115,9 +116,9 @@ public class Piirustuslogiikka {
         return ympyra;
     }
 
-    //Laskee x-koordinaatin ympyrälle/neliölle, voisi olla fiksummin
+    //Voisi laskea fiksummin?
     /**
-     * Laskee x-koordinaatin kuviolle
+     * Laskee x-koordinaatin kuviolle henkilön indeksin mukaan
      *
      * @param int indeksi, henkilön indeksi listassa
      * @return x-koordinaatti
@@ -128,22 +129,21 @@ public class Piirustuslogiikka {
         return x;
     }
 
-    //Laskee y-koordinaatin ympyrälle/neliölle, voisi tehdä fiksummin
+    //Voisi laskea fiksummin?
     /**
-     * Laskee y-koordinaatin kuviolle
+     * Laskee y-koordinaatin kuviolle henkilön sukupolven mukaan
      *
      * @param henkilo
      * @return y-koordinaatti
      */
     public int laskeY(Henkilo henkilo) {
         int y = 0;
-
         y = henkilo.getSukupolvi() * 200;
 
         return y;
     }
 
-    //Laskee sivun pituuden/halkaisijan, voisi olla vakio
+    //Voisi olla vakio?
     /**
      * Laskee neliön sivun pituuden tai ympyrän halkaisijan
      *
@@ -155,13 +155,10 @@ public class Piirustuslogiikka {
         return korkeus;
     }
 
-    //Viiva menee kuvion keskeltä kuvion keskelle nyt. Piirtää viivan puolisoiden välille
     /**
      * Luo listan Viiva-kuvioita, jonka toinen pää alkaa toisesta puolisosta ja
      * loppuu toiseen. Käy siis läpi koko henkilö-listan. Luodut viivat lisätään
-     * listana kuviolistaan
-     *
-     * @return kuviolista
+     * listana kuviolistaan. Laskee koordinaatit muiden metodien avulla.
      */
     public void luoPuolisoViivat() {
 
@@ -173,7 +170,6 @@ public class Piirustuslogiikka {
                 } else {
                     viivat.add(new Viiva(kuvionXViivanKoordinaatiksi(henkilo) - (laskeKorkeus() / 2), kuvionYViivanKoordinaatiksi(henkilo), kuvionXViivanKoordinaatiksi(henkilo.getPuoliso()) + laskeKorkeus() / 2, kuvionYViivanKoordinaatiksi(henkilo.getPuoliso())));
                 }
-
             }
         }
         if (viivat.size() > 0) {
@@ -182,7 +178,6 @@ public class Piirustuslogiikka {
 
     }
 
-    //Hakee HashMapista henkilöön liittyvän neliön/ympyrän x-koordinaatin
     /**
      * Hakee HashMapista henkilonKuvio henkilön nimen perusteella kuvion ja
      * kuvion x-koordinaatin sekä laskee siitä uuden x-koordinaatin
@@ -198,7 +193,6 @@ public class Piirustuslogiikka {
         return x;
     }
 
-    //Hakee HashMapista henkilöön liittyvän neliön/ympyrän y-koordinaatin
     /**
      * Hakee HashMapista henkilonKuvio henkilön nimen perusteella kuvion ja
      * kuvion y-koordinaatin sekä laskee siitä uuden y-koordinaatin
@@ -213,14 +207,12 @@ public class Piirustuslogiikka {
         y = y + (laskeKorkeus() / 2);
         return y;
     }
-//Yhden lapsen tapaus pitää testata!
+//TODO: Yhden lapsen tapaus pitää testata!
 
     /**
      * Logiikka, joka liittyy lapsien ja vanhempien välisiin viivoihin. Luo
      * uuden listan lapsiviivat, kutsuu kolmea muuta metodia ja lisää uudet
-     * viivat listana kuviolistaan
-     *
-     * @return kuviolista
+     * viivat listana kuviolistaan metodia kutsumalla
      */
     public void luoViivatLapsiin() {
         ArrayList<Kuvio> lapsiviivat = new ArrayList<>();
@@ -243,7 +235,8 @@ public class Piirustuslogiikka {
     }
 
     /**
-     * Luo uuden viivan puolisoiden viivasta alaspäin.
+     * Luo uuden viivan puolisoiden viivan keskeltä alaspäin. Laskee
+     * koordinaatit vanhempien kuvioiden koordinaattien perusteella
      *
      * @param henkilo
      * @return luotu viiva
@@ -300,8 +293,8 @@ public class Piirustuslogiikka {
         ArrayList<Kuvio> viivat = new ArrayList<>();
         int y1 = kuvionYViivanKoordinaatiksi(henkilo) + 100;
         int y2 = kuvionYViivanKoordinaatiksi(henkilo) + 170;
-        for (Henkilo lapsi : henkilo.getLapset()) {
 
+        for (Henkilo lapsi : henkilo.getLapset()) {
             viivat.add(new Viiva(kuvionXViivanKoordinaatiksi(lapsi), y1, kuvionXViivanKoordinaatiksi(lapsi), y2));
         }
 
@@ -330,8 +323,14 @@ public class Piirustuslogiikka {
         kuviolista.addAll(kuviot);
     }
 
+    /**
+     * Jos Henkilön onkoSairas-metodi palauttaa true, määrittää kuvion
+     * värilliseksi
+     * @param henkilo
+     * @param kuvio
+     */
     public void variKuviolle(Henkilo henkilo, Kuvio kuvio) {
-        if (henkilo.isSairas()== true) {
+        if (henkilo.onkoSairas() == true) {
             kuvio.setVari(true);
         }
     }

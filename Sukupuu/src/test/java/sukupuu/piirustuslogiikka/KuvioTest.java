@@ -1,4 +1,4 @@
-package sukupuu.piirustus;
+package sukupuu.piirustuslogiikka;
 
 
 
@@ -8,9 +8,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import sukupuu.piirustus.Nelio;
-import sukupuu.piirustus.Viiva;
-import sukupuu.piirustus.Ympyra;
+import sukupuu.piirustuslogiikka.Nelio;
+import sukupuu.piirustuslogiikka.Viiva;
+import sukupuu.piirustuslogiikka.Ympyra;
 
 
 public class KuvioTest {

@@ -1,10 +1,10 @@
-package sukupuu.piirustus;
+package sukupuu.piirustuslogiikka;
 
 import java.awt.Graphics;
 
 /**
  * Ympyra-luokka perii luokan Kuvio Luokka perii Kuvio-luokalta x- ja
- * y-koordinaatin ja piirra-metodin ja sillä on lisäksi muuttuja halkaisija
+ * y-koordinaatin ja piirra-metodin ja sillä on lisäksi muuttuja halkaisija ja vari
  */
 public class Ympyra extends Kuvio {
 
@@ -21,11 +21,19 @@ public class Ympyra extends Kuvio {
         return halkaisija;
     }
 
+    /**
+     * Värittää ympyrän
+     * @param graphics
+     */
     @Override
     public void varita(Graphics graphics) {
         graphics.fillOval(super.getX(), super.getY(), halkaisija, halkaisija);
     }
     
+    /**
+     * Piirtää ympyrän
+     * @param graphics
+     */
     @Override
     public void piirra(Graphics graphics) {
         graphics.drawOval(super.getX(), super.getY(), halkaisija, halkaisija);

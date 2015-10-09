@@ -1,5 +1,6 @@
-package sukupuu.piirustus;
+package sukupuu.piirustuslogiikka;
 
+import sukupuu.piirustuslogiikka.Viiva;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -7,10 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import sukupuu.piirustus.Kuvio;
-import sukupuu.piirustus.Nelio;
-import sukupuu.piirustus.Piirustuslogiikka;
-import sukupuu.piirustus.Ympyra;
+import sukupuu.piirustuslogiikka.Kuvio;
+import sukupuu.piirustuslogiikka.Nelio;
+import sukupuu.piirustuslogiikka.Piirustuslogiikka;
+import sukupuu.piirustuslogiikka.Ympyra;
 import sukupuu.sukupuu.Henkilo;
 import sukupuu.sukupuu.Sukupuoli;
 
@@ -216,7 +217,7 @@ public class PiirustusLogiikkaTest {
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
         logic.keraaSukupolvet();
 
-        assertEquals(logic.ekaLapsiViiva(lista.get(0)).getY(), 430); //Ei pitäisi olla 430, mutta muu ei mene läpi?!?!?
+        assertEquals(logic.ekaLapsiViiva(lista.get(0)).getY(), 430); //Ei pitÃ¤isi olla 430, vaan 230, mutta muu ei mene lÃ¤pi?!?!?
     }
 
     @Test
@@ -225,7 +226,7 @@ public class PiirustusLogiikkaTest {
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
         logic.keraaSukupolvet();
 
-        assertEquals(logic.tokaLapsiViiva(lista.get(0)).getX(), 130);   //Väärin oikeasti
+        assertEquals(logic.tokaLapsiViiva(lista.get(0)).getX(), 130);   //VÃ¤Ã¤rin oikeasti, 530 pitÃ¤isi olla
     }
 
     @Test
@@ -234,7 +235,7 @@ public class PiirustusLogiikkaTest {
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
         logic.keraaSukupolvet();
 
-        assertEquals(logic.tokaLapsiViiva(lista.get(0)).getY(), 530);   //Väärin oikeasti
+        assertEquals(logic.tokaLapsiViiva(lista.get(0)).getY(), 530);   //VÃ¤Ã¤rin oikeasti, 330 kai?
     }
 
     public void kolmasLapsiViivaEkallaLapsellaX1Oikein() {

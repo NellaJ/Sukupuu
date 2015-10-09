@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sukupuu.GraafinenKayttis;
 
 import java.util.ArrayList;
@@ -15,20 +11,21 @@ import sukupuu.main.Ohjelmalogiikka;
 import sukupuu.sukupuu.Henkilo;
 import sukupuu.sukupuu.Sukupuoli;
 
-/**
- *
- *
- */
 public class Graafinen extends javax.swing.JFrame {
 
     /**
-     * Creates new form TyypitSukupuuhun
+     * Creates new form TyypitSukupuuhun Muuttujat lista Henkilöitä, sukupuoli,
+     * sairausstatus ja sukupolvi
      */
     private ArrayList<Henkilo> ihmislista;
     private Sukupuoli sukupuoli;
     private boolean sairas;
     private int sukupolvi;
 
+    /**
+     * Graafinen käyttöliittymä. Luo samalla listan, jonne lisätään henkilöt ja
+     * sukupolvi-muuttujan, jonka arvo on alussa 1
+     */
     public Graafinen() {
         this.ihmislista = new ArrayList<Henkilo>();
         this.sukupolvi = 1;
@@ -597,6 +594,12 @@ public class Graafinen extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Luo uuden Henkilön annetun syötteen perusteella. Henkilön nimi, ikä,
+     * mutaatiot haetaan tekstikentistä. Sukupuoli ja sukupolvi saadaan
+     * muuttujasta. Mahdolliset puoliso ja lapset haetaan omista metodeista.
+     * Lopuksi lisätään henkilö listaan
+     */
     public void luoHenkilo() {
         String nimi = jTextField1.getText();
         int ika = Integer.parseInt(jTextField2.getText());
@@ -617,6 +620,11 @@ public class Graafinen extends javax.swing.JFrame {
         lisaaHenkiloListaan(henkilo);
     }
 
+    /**
+     * Parametrina saatu Henkilo lisätään listaan
+     *
+     * @param henkilo
+     */
     public void lisaaHenkiloListaan(Henkilo henkilo) {
         ihmislista.add(henkilo);
     }
@@ -625,10 +633,16 @@ public class Graafinen extends javax.swing.JFrame {
         return ihmislista;
     }
 
+    /**
+     * Luo uuden Ohjelmalogiikan ja antaa sille listan Henkilöistä parametrina
+     */
     public void tiedotEteenpain() {
         Ohjelmalogiikka ohjelma = new Ohjelmalogiikka(ihmislista);
     }
 
+    /**
+     * Tekstikentät 1-10, tyhjentää ne asettamalla niihin tyhjän Stringin
+     */
     public void tyhjenna() {
         jTextField1.setText("");
         jTextField2.setText("");
@@ -642,15 +656,26 @@ public class Graafinen extends javax.swing.JFrame {
         jTextField10.setText("");
     }
 
+    /**
+     * Hakee tekstin tekstikentästä ja luo siitä Henkilon
+     *
+     * @return luotu Henkilo tai null
+     */
     public Henkilo haePuoliso() {
         String nimi = jTextField3.getText();
         if (nimi.length() >= 1) {
             return new Henkilo(nimi);
         } else {
-        return null;
+            return null;
         }
     }
 
+    /**
+     * Luo uuden listan lapsille. Hakee lasten nimet tekstikentistä, tallentaa
+     * ne Stringeinä
+     *
+     * @return luotu lista String-nimiä
+     */
     public ArrayList<String> haeLapset() {
         ArrayList<String> lapset = new ArrayList<String>();
         String nimi1 = jTextField5.getText();

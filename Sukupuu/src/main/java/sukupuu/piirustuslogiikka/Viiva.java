@@ -1,4 +1,4 @@
-package sukupuu.piirustus;
+package sukupuu.piirustuslogiikka;
 
 import java.awt.Graphics;
 
@@ -26,12 +26,20 @@ public class Viiva extends Kuvio {
         return y2;
     }
 
+    /**
+     * Piirtää viivan
+     *
+     * @param graphics
+     */
     @Override
     public void piirra(Graphics graphics) {
-        
         graphics.drawLine(super.getX(), super.getY(), x2, y2);
     }
 
+    /**
+     *
+     * @param graphics
+     */
     @Override
     public void varita(Graphics graphics) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

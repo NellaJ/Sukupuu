@@ -1,9 +1,10 @@
-package sukupuu.piirustus;
+package sukupuu.piirustuslogiikka;
 
 import java.awt.Graphics;
 
 /**
- * Kuvio-luokka jossa x- ja y-koordinaatti sekä abstract piirra-metodi
+ * Kuvio-luokka jossa x- ja y-koordinaatti sekä abstract piirra- ja
+ * varita-metodit
  */
 public abstract class Kuvio {
 
@@ -28,12 +29,11 @@ public abstract class Kuvio {
         this.vari = vari;
     }
 
-    public boolean isVari() {
+    public boolean onkoVari() {
         return vari;
     }
 
     public abstract void piirra(Graphics graphics);
-    
+
     public abstract void varita(Graphics graphics);
 }
-    

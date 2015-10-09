@@ -34,7 +34,7 @@ public class HenkiloTest {
 
     @Test
     public void konstruktoriLaittaaSairaudenOikein() {
-        assertEquals(true, henkilo.isSairas());
+        assertEquals(true, henkilo.onkoSairas());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class HenkiloTest {
         Henkilo henkiloUusi = new Henkilo("nimi");
         assertEquals("nimi", henkiloUusi.getNimi());
         assertEquals(0, henkiloUusi.getIka());
-        assertEquals(false, henkiloUusi.isSairas());
+        assertEquals(false, henkiloUusi.onkoSairas());
         assertTrue(henkiloUusi.getMutaatiot().isEmpty());
         assertEquals(Sukupuoli.MUU, henkiloUusi.getSukupuoli());
     }
