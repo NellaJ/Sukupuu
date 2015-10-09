@@ -8,8 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import sukupuu.main.Ohjelmalogiikka;
-import sukupuu.sukupuu.Henkilo;
-import sukupuu.sukupuu.Sukupuoli;
+import sukupuu.henkilo.Henkilo;
+import sukupuu.henkilo.Sukupuoli;
 
 public class Graafinen extends javax.swing.JFrame {
 

@@ -2,8 +2,8 @@ package sukupuu.piirustuslogiikka;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import sukupuu.sukupuu.Henkilo;
-import sukupuu.sukupuu.Sukupuoli;
+import sukupuu.henkilo.Henkilo;
+import sukupuu.henkilo.Sukupuoli;
 
 /**
  * Luokka sisältää logiikan jonka mukaan eri kuviot piirretään: mikä kuvio,

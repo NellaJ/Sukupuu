@@ -12,8 +12,8 @@ import sukupuu.piirustuslogiikka.Kuvio;
 import sukupuu.piirustuslogiikka.Nelio;
 import sukupuu.piirustuslogiikka.Piirustuslogiikka;
 import sukupuu.piirustuslogiikka.Ympyra;
-import sukupuu.sukupuu.Henkilo;
-import sukupuu.sukupuu.Sukupuoli;
+import sukupuu.henkilo.Henkilo;
+import sukupuu.henkilo.Sukupuoli;
 
 public class PiirustusLogiikkaTest {
 

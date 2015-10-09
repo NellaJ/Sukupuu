@@ -7,7 +7,7 @@ import sukupuu.GraafinenKayttis.Graafinen;
 import sukupuu.piirustuslogiikka.Kuvio;
 import sukupuu.piirustus.PiirtoKayttoliittyma;
 import sukupuu.piirustuslogiikka.Piirustuslogiikka;
-import sukupuu.sukupuu.Henkilo;
+import sukupuu.henkilo.Henkilo;
 
 
 public class Ohjelmalogiikka {

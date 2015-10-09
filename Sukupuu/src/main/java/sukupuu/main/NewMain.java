@@ -3,7 +3,7 @@ package sukupuu.main;
 
 import java.util.ArrayList;
 import sukupuu.GraafinenKayttis.Graafinen;
-import sukupuu.sukupuu.Henkilo;
+import sukupuu.henkilo.Henkilo;
 
 
 public class NewMain {

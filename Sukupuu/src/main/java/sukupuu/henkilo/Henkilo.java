@@ -1,4 +1,4 @@
-package sukupuu.sukupuu;
+package sukupuu.henkilo;
 
 import java.util.ArrayList;
 import java.util.List;
