@@ -26,3 +26,4 @@
 - **06.10** 2h Graafista käyttöliittymää, joku testi
 - **07.10** 2,5h Graafinen käyttöliittymä tapahtumakuuntelijoineen yms. toimii (testattu printtauksin). Ohjelmalogiikka ei vaan piirrä mitään. Jälleen runsasta googletusta ja valitusta. Ohjelmalogiikka ei edelleen piirrä mitään. Tyssää ilman erroria jonnekin Piirtokäyttöliittymä-luokkaan. Syy tuntematon (minulle). System.out.print("Ohjelmointi on ihanaa")
 - **08.10** 3h Graafiseen pikkuruinen muutos ja nyt ohjelma toimii. Loppuaika testien kehittämistä, sisältäen testien keksimisen vaikeuden, koordinaattien päässälaskua, useita pit-raportteja, @Test-annotaation unohduksen ja rivikattavuuden roima nousu. (Osa testeistä tosin laskee koordinaatin väärin, en tiedä miksi, väärillä mennään sitten).
+- **09.10** 3h Sekvenssikaavioiden kertausta. Sekvenssikaavioita piirrelty 4 kpl ja skannattu ja muokattu. Koko koodille pientä siistimistä, uudelleenjärjestelyä ja Javadocia.
