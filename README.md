@@ -2,5 +2,5 @@
  
 
 Syötä henkilöiden tietoja ikkunaan joka käynnistyy mainista.
-Muista tallentaa. Virhesyötteitä ei käsitellä (vielä).
+Muista tallentaa. 
 Toivon mukaan suoltaa tuloksena kuvan sukupuusta.
