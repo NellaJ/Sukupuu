@@ -26,7 +26,7 @@ public class Ohjelmalogiikka {
     private void start() {
 
         Piirustuslogiikka logic = new Piirustuslogiikka(ihmislista);
-        ArrayList<Kuvio> kuviot = logic.piirraKuviot();     //"Muuttaa" henkilöt kuvioiksi
+        ArrayList<Kuvio> kuviot = logic.luoKuviot();     //"Muuttaa" henkilöt kuvioiksi
 
         PiirtoKayttoliittyma kayttis = new PiirtoKayttoliittyma(kuviot);        //Piirtää ne kuviot
         SwingUtilities.invokeLater(kayttis);
