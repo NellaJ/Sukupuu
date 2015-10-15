@@ -30,7 +30,7 @@ public class Piirustuslogiikka {
      *
      * @return kuviolista lista kuvioita
      */
-    public ArrayList<Kuvio> piirraKuviot() {
+    public ArrayList<Kuvio> luoKuviot() {
 
         keraaSukupolvet();
         luoPuolisoViivat();
@@ -59,7 +59,9 @@ public class Piirustuslogiikka {
                     sukupolvi.add(henkilo);
                 }
             }
+            if (sukupolvi.size() > 0) {
             muutaSukupuolet(sukupolvi);
+            }
             a++;
         }
     }
@@ -75,16 +77,59 @@ public class Piirustuslogiikka {
      */
     public void muutaSukupuolet(ArrayList<Henkilo> sukupolvi) {
 
+        ArrayList<Integer> xKoordinaatit = luoKoordinaattilista(sukupolvi.size()); 
+        HashMap<String, Integer> muistilappu = new HashMap<String, Integer>();
+
         for (Henkilo henkilo : sukupolvi) {
-            int i = sukupolvi.indexOf(henkilo);        //Sukupolvi listana, järjestys kuvioille siitä
-            if (henkilo.getSukupuoli() == Sukupuoli.MIES) {
-                henkilonKuvio.put(henkilo.getNimi(), teeNelio(henkilo, i));
-                kuviolista.add(henkilonKuvio.get(henkilo.getNimi()));
-            } else if (henkilo.getSukupuoli() == Sukupuoli.NAINEN) {
-                henkilonKuvio.put(henkilo.getNimi(), teeYmpyra(henkilo, i));
-                kuviolista.add(henkilonKuvio.get(henkilo.getNimi()));
-            } //else -> jos sukupuoli on "MUU"          TODO!
+            if (henkilo.getPuoliso() != null && muistilappu.containsKey(henkilo.getNimi()) == false) {
+                int x = xKoordinaatit.get(0);
+                muistilappu.put(henkilo.getNimi(), x);
+                xKoordinaatit.remove(0);
+                luoKuvio(henkilo, x);
+                x = xKoordinaatit.get(0);
+                muistilappu.put(henkilo.getPuoliso().getNimi(), x);
+                xKoordinaatit.remove(0);
+                luoKuvio(haePuoliso(henkilo), x);          
+            } else if (muistilappu.containsKey(henkilo.getNimi()) == false) {
+                int x = xKoordinaatit.get(xKoordinaatit.size() - 1);
+                muistilappu.put(henkilo.getNimi(), x);
+                xKoordinaatit.remove(xKoordinaatit.size() - 1);
+                luoKuvio(henkilo, x);
+            }
         }
+
+    }
+
+    public void luoKuvio(Henkilo kuvioitava, int xKoordinaatti) {
+
+        if (kuvioitava.getSukupuoli() == Sukupuoli.MIES) {
+            henkilonKuvio.put(kuvioitava.getNimi(), teeNelio(kuvioitava, xKoordinaatti));
+            kuviolista.add(henkilonKuvio.get(kuvioitava.getNimi()));
+        } else if (kuvioitava.getSukupuoli() == Sukupuoli.NAINEN) {
+            henkilonKuvio.put(kuvioitava.getNimi(), teeYmpyra(kuvioitava, xKoordinaatti));
+            kuviolista.add(henkilonKuvio.get(kuvioitava.getNimi()));
+        } //else -> MUU = Vinoneliö. TODO
+    }
+
+    public Henkilo haePuoliso(Henkilo puoliso) {
+        for (Henkilo ihminen : ihmiset) {
+            if (puoliso.getPuoliso().getNimi().equals(ihminen.getNimi())) {
+                return ihminen;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Integer> luoKoordinaattilista(int koko) {
+        ArrayList<Integer> koord = new ArrayList<Integer>();
+
+        int a = 100;
+        while (koord.size() < koko) {
+            koord.add(a);
+            a = a + 100;
+        }
+
+        return koord;
     }
 
     /**
@@ -93,11 +138,11 @@ public class Piirustuslogiikka {
      * henkilö ja luotu neliö. Kuvion värittämiseksi.
      *
      * @param henkilo
-     * @param indeksi eli henkilön indeksi sukupolvi-listassa
+     * @param x eli henkilön indeksi sukupolvi-listassa
      * @return luotu neliö
      */
-    public Nelio teeNelio(Henkilo henkilo, int indeksi) {
-        Nelio nelio = new Nelio(laskeX(indeksi), laskeY(henkilo), laskeKorkeus());
+    public Nelio teeNelio(Henkilo henkilo, int x) {
+        Nelio nelio = new Nelio(x, laskeY(henkilo), laskeKorkeus());
         variKuviolle(henkilo, nelio);
         return nelio;
     }
@@ -107,11 +152,11 @@ public class Piirustuslogiikka {
      * muuta metodia. Kutsuu lisäksi metodia kuvion värittämiseen
      *
      * @param henkilo
-     * @param indeksi
+     * @param x
      * @return luotu ympyrä
      */
-    public Ympyra teeYmpyra(Henkilo henkilo, int indeksi) {
-        Ympyra ympyra = new Ympyra(laskeX(indeksi), laskeY(henkilo), laskeKorkeus());
+    public Ympyra teeYmpyra(Henkilo henkilo, int x) {
+        Ympyra ympyra = new Ympyra(x, laskeY(henkilo), laskeKorkeus());
         variKuviolle(henkilo, ympyra);
         return ympyra;
     }
@@ -123,12 +168,11 @@ public class Piirustuslogiikka {
      * @param int indeksi, henkilön indeksi listassa
      * @return x-koordinaatti
      */
-    public int laskeX(int indeksi) {
-        int x = 100 + (indeksi * 200);
-
-        return x;
-    }
-
+//    public int laskeX(int indeksi) {
+//        int x = 100 + (indeksi * 200);
+//
+//        return x;
+//    }
     //Voisi laskea fiksummin?
     /**
      * Laskee y-koordinaatin kuviolle henkilön sukupolven mukaan
@@ -166,9 +210,9 @@ public class Piirustuslogiikka {
         for (Henkilo henkilo : ihmiset) {
             if (henkilo.getPuoliso() != null) {
                 if (henkilonKuvio.get(henkilo.getNimi()).getX() < henkilonKuvio.get(henkilo.getPuoliso().getNimi()).getX()) {
-                    viivat.add(new Viiva(kuvionXViivanKoordinaatiksi(henkilo) + (laskeKorkeus() / 2), kuvionYViivanKoordinaatiksi(henkilo), kuvionXViivanKoordinaatiksi(henkilo.getPuoliso()) - laskeKorkeus() / 2, kuvionYViivanKoordinaatiksi(henkilo.getPuoliso())));
+                    viivat.add(new Viiva(kuvionXViivalle(henkilo) + (laskeKorkeus() / 2), kuvionYViivalle(henkilo), kuvionXViivalle(henkilo.getPuoliso()) - laskeKorkeus() / 2, kuvionYViivalle(henkilo.getPuoliso())));
                 } else {
-                    viivat.add(new Viiva(kuvionXViivanKoordinaatiksi(henkilo) - (laskeKorkeus() / 2), kuvionYViivanKoordinaatiksi(henkilo), kuvionXViivanKoordinaatiksi(henkilo.getPuoliso()) + laskeKorkeus() / 2, kuvionYViivanKoordinaatiksi(henkilo.getPuoliso())));
+                    viivat.add(new Viiva(kuvionXViivalle(henkilo) - (laskeKorkeus() / 2), kuvionYViivalle(henkilo), kuvionXViivalle(henkilo.getPuoliso()) + laskeKorkeus() / 2, kuvionYViivalle(henkilo.getPuoliso())));
                 }
             }
         }
@@ -179,13 +223,13 @@ public class Piirustuslogiikka {
     }
 
     /**
-     * Hakee HashMapista henkilonKuvio henkilön nimen perusteella kuvion ja
+     * Hakee HashMapista henkilonKuvio henkilön nimen perusteell a kuvion ja
      * kuvion x-koordinaatin sekä laskee siitä uuden x-koordinaatin
      *
      * @param henkilo
      * @return x-koordinaatti
      */
-    public int kuvionXViivanKoordinaatiksi(Henkilo henkilo) {
+    public int kuvionXViivalle(Henkilo henkilo) {
         int x = 0;
 
         x = henkilonKuvio.get(henkilo.getNimi()).getX();
@@ -200,7 +244,7 @@ public class Piirustuslogiikka {
      * @param henkilo
      * @return y-koordinaatti
      */
-    public int kuvionYViivanKoordinaatiksi(Henkilo henkilo) {
+    public int kuvionYViivalle(Henkilo henkilo) {
         int y = 0;
 
         y = henkilonKuvio.get(henkilo.getNimi()).getY();
@@ -219,8 +263,12 @@ public class Piirustuslogiikka {
         int a = 0;
         for (Henkilo henkilo : ihmiset) {
             if (henkilo.getLapset() != null && henkilo.getLapset().size() > 0) {
-                if (henkilo.getLapset().size() == 1) {
-                    lapsiviivat.add(new Viiva(kuvionXViivanKoordinaatiksi(henkilo), kuvionYViivanKoordinaatiksi(henkilo), kuvionXViivanKoordinaatiksi(henkilo.getLapset().get(0)), kuvionYViivanKoordinaatiksi(henkilo.getLapset().get(0))));
+                if (henkilo.getLapset().size() == 1) {      //Yhden lapsen kuvion koordinaatit huonot!
+                    int x1 = (kuvionXViivalle(henkilo) + kuvionXViivalle(henkilo.getPuoliso())) / 2;
+                    int x2 = henkilonKuvio.get(henkilo.getLapset().get(0).getNimi()).getX();
+                    int y1 = kuvionYViivalle(henkilo);
+                    int y2 = henkilonKuvio.get(henkilo.getLapset().get(0).getNimi()).getY();
+                    lapsiviivat.add(new Viiva(x1, y1, x2, y2));
                 } else {
                     lapsiviivat.add(ekaLapsiViiva(henkilo));
                     lapsiviivat.add(tokaLapsiViiva(henkilo));
@@ -241,12 +289,12 @@ public class Piirustuslogiikka {
      * @param henkilo
      * @return luotu viiva
      */
-    public Kuvio ekaLapsiViiva(Henkilo henkilo) {
+    public Viiva ekaLapsiViiva(Henkilo henkilo) {
 
-        int x1 = (kuvionXViivanKoordinaatiksi(henkilo) + kuvionXViivanKoordinaatiksi(henkilo.getPuoliso())) / 2;
-        int x2 = (kuvionXViivanKoordinaatiksi(henkilo) + kuvionXViivanKoordinaatiksi(henkilo.getPuoliso())) / 2;
-        int y1 = kuvionYViivanKoordinaatiksi(henkilo);
-        int y2 = kuvionYViivanKoordinaatiksi(henkilo) + 100;   //sukupolvien välillä eroa 200, viiva piirretään sukupolvien puoleen väliin
+        int x1 = (kuvionXViivalle(henkilo) + kuvionXViivalle(henkilo.getPuoliso())) / 2;
+        int x2 = (kuvionXViivalle(henkilo) + kuvionXViivalle(henkilo.getPuoliso())) / 2;
+        int y1 = kuvionYViivalle(henkilo);
+        int y2 = kuvionYViivalle(henkilo) + 100;   //sukupolvien välillä eroa 200, viiva piirretään sukupolvien puoleen väliin
         Viiva viiva = new Viiva(x1, y1, x2, y2);
 
         return viiva;
@@ -260,20 +308,20 @@ public class Piirustuslogiikka {
      * @param henkilo
      * @return luotu viiva
      */
-    public Kuvio tokaLapsiViiva(Henkilo henkilo) {
+    public Viiva tokaLapsiViiva(Henkilo henkilo) {
         int pieninX = 1000;
         int suurinX = 0;
 
         for (Henkilo lapsi : henkilo.getLapset()) {
-            if (kuvionXViivanKoordinaatiksi(lapsi) <= pieninX) {
-                pieninX = kuvionXViivanKoordinaatiksi(lapsi);
+            if (kuvionXViivalle(lapsi) <= pieninX) {
+                pieninX = kuvionXViivalle(lapsi);
             }
-            if (kuvionXViivanKoordinaatiksi(lapsi) >= suurinX) {
-                suurinX = kuvionXViivanKoordinaatiksi(lapsi);
+            if (kuvionXViivalle(lapsi) >= suurinX) {
+                suurinX = kuvionXViivalle(lapsi);
             }
         }
 
-        int y = kuvionYViivanKoordinaatiksi(henkilo) + 100;
+        int y = kuvionYViivalle(henkilo) + 100;
 
         Viiva viiva = new Viiva(pieninX, y, suurinX, y);
 
@@ -289,13 +337,13 @@ public class Piirustuslogiikka {
      * @param henkilo
      * @return viiva-lista
      */
-    public ArrayList<Kuvio> kolmasLapsiviiva(Henkilo henkilo) {
-        ArrayList<Kuvio> viivat = new ArrayList<>();
-        int y1 = kuvionYViivanKoordinaatiksi(henkilo) + 100;
-        int y2 = kuvionYViivanKoordinaatiksi(henkilo) + 170;
+    public ArrayList<Viiva> kolmasLapsiviiva(Henkilo henkilo) {
+        ArrayList<Viiva> viivat = new ArrayList<>();
+        int y1 = kuvionYViivalle(henkilo) + 100;
+        int y2 = kuvionYViivalle(henkilo) + 170;
 
         for (Henkilo lapsi : henkilo.getLapset()) {
-            viivat.add(new Viiva(kuvionXViivanKoordinaatiksi(lapsi), y1, kuvionXViivanKoordinaatiksi(lapsi), y2));
+            viivat.add(new Viiva(kuvionXViivalle(lapsi), y1, kuvionXViivalle(lapsi), y2));
         }
 
         return viivat;
@@ -326,6 +374,7 @@ public class Piirustuslogiikka {
     /**
      * Jos Henkilön onkoSairas-metodi palauttaa true, määrittää kuvion
      * värilliseksi
+     *
      * @param henkilo
      * @param kuvio
      */
