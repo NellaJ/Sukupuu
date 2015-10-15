@@ -39,6 +39,7 @@ public class Piirtoalusta extends JPanel {
                 kuvio.varita(graphics);
             }
         }
+        graphics2.drawString("TestiTeksti", 25, 25);
     }
 
 }
