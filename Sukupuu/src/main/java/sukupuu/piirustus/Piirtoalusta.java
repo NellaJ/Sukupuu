@@ -35,7 +35,7 @@ public class Piirtoalusta extends JPanel {
             kuvio.piirra(graphics2);
             
             if (kuvio.onkoVari() == true) {
-                graphics2.setPaint(Color.RED);
+                graphics2.setPaint(Color.BLACK);
                 kuvio.varita(graphics);
             }
         }
