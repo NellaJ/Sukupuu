@@ -32,4 +32,6 @@
 - **12.20** 3h X-koordinaattien laskemista paremmin yritetty. Pähkäilyyn meni ehkä tunti. Toteutukseen jatkuvien errorien ja kaatumisten kanssa loppuaika. Ohjelma myös lopetti toiminnan kokonaan ja syypään löytämiseen tarvittiin debuggaus useaan otteeseen. Testit nyt mukavasti punaisella, mutta korjaaminen jää myöhempään. Lapsien viivat on myös ihan missä sattuu. Mutta nukuttaa jo liikaa.
 - **15.10** 2h Koordinaattien laskeminen toimii paremmin kuin koskaan, parannettavaa olisi silti edelleen. Testit edelleen punaisella (logiikkaluokan), syy tuntematon. Tekstilaatikoiden saamista sukupuukuvioon tuli vähän kokeiltua, mutta lopullinen (mahdollinen) toteutus jää viikonloppuun, koska silmäluomet ovat taas liian raskaat.
 - **16.10** 3h Demotilaisuus + pientä koodin paranteluyritystä laihoin tuloksin
-- **17.10** 5h Kuvioiden koordinaattien laskeminen jälleen uusiksi. Välillä toimii, välillä eri, välillä piirtää kuviot vääriin paikkoihin. Ei voi mitään, aika loppuu kesken. (nyyh)
+- **17.10** 5h Kuvioiden koordinaattien laskeminen jälleen uusiksi. Välillä toimii, välillä eri, välillä piirtää kuviot vääriin paikkoihin. Ei voi mitään, aika loppuu kesken. (nyyh) 
+- **18.10** 5h Vähän kaikkea
+- **YHTEENSÄ 99h** (Jos laskin oikein)
