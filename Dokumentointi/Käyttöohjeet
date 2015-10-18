@@ -1,2 +1,10 @@
 Käyttöohje
-Käynnistä ohjelma. Avautuu ikkuna, jonne henkilöiden tiedot syötetään: yksi henkilö kerrallaan, ja sukupolvi kerrallaan. Henkilön tiedoista nimi on vähimmäisvaatimus. (Ikä ja mutaatiot-tiedot eivät tee mitään tällä hetkellä). Puolison ja lapsien nimet syötetään omiin kenttiin. Kun kaikki tiedot on syötetty, klikkaa Tallenna-nappia! Muuten henkilön tiedot eivät tallennu. Jos haluat syöttää uuden henkilön samaan sukupolveen, klikkaa Lisää uusi henkilö. Jos haluat siirtyä seuraavaan sukupolveen, klikkaa Lisää uusi sukupolvi. Kun kaikki henkilöt on syötetty (ja tallennettu!!!), klikkaa Valmis-nappulaa, jonka jälkeen pitäisi avautua uusi ikkuna, jossa luotu sukupuu. HUOM!!! Lisää myös puoliso ja lapset omina henkilöinään! 
+Käynnistä ohjelma. Avautuu ikkuna, jonne henkilöiden tiedot syötetään: yksi henkilö kerrallaan, ja sukupolvi 
+kerrallaan. Henkilön tiedoista nimi on vähimmäisvaatimus. (Ikä ja mutaatiot-tiedot eivät tee mitään tällä hetkellä). 
+Puolison ja lapsien nimet syötetään omiin kenttiin. 
+Kun kaikki tiedot on syötetty, klikkaa Tallenna-nappia! Muuten henkilön tiedot eivät tallennu. 
+Jos haluat syöttää uuden henkilön samaan sukupolveen, klikkaa Lisää uusi henkilö. 
+Jos haluat siirtyä seuraavaan sukupolveen, klikkaa Lisää uusi sukupolvi. 
+Kun kaikki henkilöt on syötetty (ja tallennettu!!!), klikkaa Valmis-nappulaa, 
+jonka jälkeen pitäisi avautua uusi ikkuna, jossa luotu sukupuu. 
+HUOM!!! Lisää myös puoliso ja lapset omina henkilöinään! 
