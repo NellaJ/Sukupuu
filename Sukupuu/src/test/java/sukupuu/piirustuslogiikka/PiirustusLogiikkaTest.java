@@ -24,10 +24,10 @@ public class PiirustusLogiikkaTest {
     @Before
     public void setUp() {
 
-        Henkilo mies = new Henkilo("M", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    //indeksi 0
+        Henkilo mies = new Henkilo("M", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    
         mies.setSukupolvi(1);
         henkilot.add(mies);
-        Henkilo nainen = new Henkilo("N", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); //indeksi 1
+        Henkilo nainen = new Henkilo("N", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); 
         nainen.setSukupolvi(1);
         henkilot.add(nainen);
         logiikka = new Piirustuslogiikka(henkilot);
@@ -71,14 +71,14 @@ public class PiirustusLogiikkaTest {
 
     @Test
     public void toinenXMetodiToimiiOikein() {
-        Henkilo mies2 = new Henkilo("M2", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    //indeksi 0
+        Henkilo mies2 = new Henkilo("M2", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    
         mies2.setSukupolvi(1);
-        Henkilo nainen2 = new Henkilo("N2", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); //indeksi 1
+        Henkilo nainen2 = new Henkilo("N2", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); 
         nainen2.setSukupolvi(1);
         mies2.setPuoliso(nainen2);
         nainen2.setPuoliso(mies2);
-        henkilot.add(mies2);    //indeksi 2
-        henkilot.add(nainen2);  //indeksi 3
+        henkilot.add(mies2);    
+        henkilot.add(nainen2);  
         logiikka = new Piirustuslogiikka(henkilot);
         logiikka.luoKuviot();
         assertEquals(logiikka.xViivalle(nainen2), 230);
@@ -86,9 +86,9 @@ public class PiirustusLogiikkaTest {
 
     @Test
     public void toinenYMetodiToimiiOikein() {
-        Henkilo mies2 = new Henkilo("M2", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    //indeksi 0
+        Henkilo mies2 = new Henkilo("M2", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    
         mies2.setSukupolvi(3);
-        Henkilo nainen2 = new Henkilo("N2", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); //indeksi 1
+        Henkilo nainen2 = new Henkilo("N2", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); 
         nainen2.setSukupolvi(3);
         mies2.setPuoliso(nainen2);
         nainen2.setPuoliso(mies2);
@@ -103,10 +103,10 @@ public class PiirustusLogiikkaTest {
     @Test
     public void puolisoViivojaEiTuleKuviolistaanJosEiPuolisoa() {
         ArrayList<Henkilo> sinkut = new ArrayList<Henkilo>();
-        Henkilo mies = new Henkilo("M", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    //indeksi 0
+        Henkilo mies = new Henkilo("M", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    
         mies.setSukupolvi(1);
         sinkut.add(mies);
-        Henkilo nainen = new Henkilo("N", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); //indeksi 1
+        Henkilo nainen = new Henkilo("N", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); 
         nainen.setSukupolvi(1);
         sinkut.add(nainen);
         Piirustuslogiikka sinkkuLogiikka = new Piirustuslogiikka(sinkut);
@@ -121,9 +121,9 @@ public class PiirustusLogiikkaTest {
     @Test
     public void kuvioidenMaaraEiLisaannyLapsiviivoillaJosEiLapsia() {
         ArrayList<Henkilo> lapsettomat = new ArrayList<Henkilo>();
-        Henkilo mies = new Henkilo("M", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    //indeksi 0
+        Henkilo mies = new Henkilo("M", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    
         mies.setSukupolvi(1);
-        Henkilo nainen = new Henkilo("N", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); //indeksi 1
+        Henkilo nainen = new Henkilo("N", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); 
         nainen.setSukupolvi(1);
         mies.setPuoliso(nainen);
         nainen.setPuoliso(mies);
@@ -209,7 +209,7 @@ public class PiirustusLogiikkaTest {
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
         logic.luoKuviot();
 
-        assertEquals(logic.ekaLapsiViiva(lista.get(0)).getY(), 430); //Ei pitÃ¤isi olla 430, vaan 230, mutta muu ei mene lÃ¤pi?!?!?
+        assertEquals(logic.ekaLapsiViiva(lista.get(0)).getY(), 430); 
     }
 
     @Test
@@ -218,7 +218,7 @@ public class PiirustusLogiikkaTest {
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
         logic.luoKuviot();
 
-        assertEquals(logic.tokaLapsiViiva(lista.get(0)).getX(), 30);   //VÃ¤Ã¤rin oikeasti, 530 pitÃ¤isi olla
+        assertEquals(logic.tokaLapsiViiva(lista.get(0)).getX(), 30);  
     }
 
     @Test
@@ -227,7 +227,7 @@ public class PiirustusLogiikkaTest {
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
         logic.luoKuviot();
 
-        assertEquals(logic.tokaLapsiViiva(lista.get(0)).getY(), 530);   //VÃ¤Ã¤rin oikeasti, 330 kai?
+        assertEquals(logic.tokaLapsiViiva(lista.get(0)).getY(), 530);   
     }
 
     public void kolmasLapsiViivaEkallaLapsellaX1Oikein() {
@@ -254,15 +254,15 @@ public class PiirustusLogiikkaTest {
 
     public ArrayList<Henkilo> luoLapsellistenLista() {
         ArrayList<Henkilo> lapselliset = new ArrayList<Henkilo>();
-        Henkilo mies = new Henkilo("M", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    //indeksi 0
+        Henkilo mies = new Henkilo("M", 40, true, mutaatiotTyhja, Sukupuoli.MIES);   
         mies.setSukupolvi(1);
-        Henkilo nainen = new Henkilo("N", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); //indeksi 1
+        Henkilo nainen = new Henkilo("N", 30, false, mutaatiotTyhja, Sukupuoli.NAINEN); 
         nainen.setSukupolvi(1);
         mies.setPuoliso(nainen);
         nainen.setPuoliso(mies);
-        Henkilo poika = new Henkilo("M", 4, true, mutaatiotTyhja, Sukupuoli.MIES);    //indeksi 2
+        Henkilo poika = new Henkilo("M", 4, true, mutaatiotTyhja, Sukupuoli.MIES);    
         poika.setSukupolvi(2);
-        Henkilo tytto = new Henkilo("N", 3, false, mutaatiotTyhja, Sukupuoli.NAINEN); //indeksi 3
+        Henkilo tytto = new Henkilo("N", 3, false, mutaatiotTyhja, Sukupuoli.NAINEN); 
         nainen.setSukupolvi(2);
         nainen.lisaaLapsi(poika);
         nainen.lisaaLapsi(tytto);

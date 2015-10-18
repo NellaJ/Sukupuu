@@ -10,18 +10,18 @@ import sukupuu.piirustuslogiikka.Piirustuslogiikka;
 import sukupuu.henkilo.Henkilo;
 
 /**
+ * Ohjelmalogiikka saa parametrina listan henkilöitä. Konstruktori kutsuu
+ * metodia start. Se luo uuden Piirustuslogiikan, joka saa parametrina
+ * ihmislistan. Luo listan kuvioita kutsumalla Piirustuslogiikan metodia. Luo
+ * HashMapin tekstit kutsumalla Piirustuslogiikan metodia. Luo uuden
+ * PiirtoKayttoLiittyman, joka saa parametreina kuviot-listan ja
+ * tekstit-HashMapin.
  *
- * @author Hourula
  */
 public class Ohjelmalogiikka {
 
     private ArrayList<Henkilo> ihmislista;
 
-    /**
-     * Saa parametrina ArrayListin Henkiloita.
-     *
-     * @param lista
-     */
     public Ohjelmalogiikka(ArrayList<Henkilo> lista) {
         this.ihmislista = lista;
         start();
@@ -30,11 +30,11 @@ public class Ohjelmalogiikka {
     private void start() {
 
         Piirustuslogiikka logic = new Piirustuslogiikka(ihmislista);
-        ArrayList<Kuvio> kuviot = logic.luoKuviot();     
+        ArrayList<Kuvio> kuviot = logic.luoKuviot();
 
         HashMap<Kuvio, String> tekstit = logic.teeStringLista();
 
-        PiirtoKayttoliittyma kayttis = new PiirtoKayttoliittyma(kuviot, tekstit);       
+        PiirtoKayttoliittyma kayttis = new PiirtoKayttoliittyma(kuviot, tekstit);
         SwingUtilities.invokeLater(kayttis);
     }
 }

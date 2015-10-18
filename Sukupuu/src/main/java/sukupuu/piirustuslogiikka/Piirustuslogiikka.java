@@ -71,8 +71,10 @@ public class Piirustuslogiikka {
     /**
      * Kutsuu ensin metodia. Tämän jälkeen käy läpi ihmiset-listan. Jos henkilöä
      * ei ole henkilonKuvio-HashMapissa, hakee henkilölle koordinaatin metodia
-     * kutsumalla (parametrina henkilo), asettaa koordinaatin tilan falseksi ja luo henkilölle kuvion
-     * kutsumalla metodia (parametreina henkilo sekä koordinaatin x ja y).
+     * kutsumalla (parametrina henkilo), asettaa koordinaatin tilan falseksi ja
+     * luo henkilölle kuvion kutsumalla metodia (parametreina henkilo sekä
+     * koordinaatin x ja y). Koska perheille luodaan kuviot ensin, varmistetaan
+     * se että sekä puolisoiden että sisarusten kuviot tulevat vierekkäin.
      *
      */
     public void henkilotKuvioiksi() {
@@ -88,7 +90,14 @@ public class Piirustuslogiikka {
     }
 
     /**
-     * 
+     * Käy läpi puolisot-HashMapin. Hakee henkilölle koordinaatin metodia
+     * kutsumalla, asettaa koordinaatin tilan falseksi ja luo henkilölle kuvion
+     * metodia kutsumalla. Seuraavaksi hakee koordinaatin henkilön puolisolle,
+     * niin että ottaa henkilön koordinaatin indeksin koordinaatti-listasta ja
+     * hakee sitä seuraavalla indeksillä sieltä koordinaatin. Puolison
+     * koordinaatti asetetaan falseksi ja luodaan kuvio. Vierekkäisillä listan
+     * indekseillä siis varmistetaan, että puolisoiden kuviot tulevat
+     * vierekkäin. Lisäksi vielä kutsutaan metodia lasten kuvioiden luomiseksi.
      */
     public void perheetKuvioiksi() {
         for (Henkilo henkilo : puolisot.keySet()) {
@@ -110,9 +119,16 @@ public class Piirustuslogiikka {
     }
 
     /**
+     * Hakee henkilölle koordinaatin. Henkilön sukupolvi määrittää
+     * y-koordinaatin. Koordinaatti-lista käydään läpi ja palautetaan
+     * ensimmäinen koordinaatti, jonka y-koordinaatti on henkilön sukupolvea
+     * vastaava ja jonka tila on true (eli vapaana). Jos tällaista koordinaattia
+     * ei löydy, palauttaa koordinaatin 0,0. Hakee aina parillisen koordinaatin,
+     * tällöin mahdolliselle puolisolle jää kuvion viereen tilaa (puolisoille
+     * tulee aina pariton koordinaatti)
      *
      * @param henkilo
-     * @return
+     * @return Koordinaatti
      */
     public Koordinaatti haeKoordinaatti(Henkilo henkilo) {
         int y = henkilo.getSukupolvi() * 200;
@@ -128,10 +144,14 @@ public class Piirustuslogiikka {
     }
 
     /**
+     * Luo uuden kuvion kutsumalla metodia. Jos sukupuoli on mies, kutsutaan
+     * teeNelio ja jos nainen, teeYmpyra. Lisää luodun kuvion
+     * henkilonKuvio-HashMapiin henkilön nimen kanssa sekä kuviolistaan. (MUU ja
+     * vinoneliön luominen puuttuu)
      *
-     * @param kuvioitava
-     * @param xKoordinaatti
-     * @param YKoordinaatti
+     * @param Henkilo kuvioitava
+     * @param int xKoordinaatti
+     * @param int YKoordinaatti
      */
     public void luoKuvio(Henkilo kuvioitava, int xKoordinaatti, int YKoordinaatti) {
 
@@ -145,9 +165,12 @@ public class Piirustuslogiikka {
     }
 
     /**
+     * Hakee henkilön puolison ihmiset-listasta ja palauttaa sen. Miksi näin?
+     * Henkilon getPuoliso-metodi ei palauta oikeaa henkilo-oliota Jos puolisoa
+     * ei löydy, palauttaa null.
      *
-     * @param puoliso
-     * @return
+     * @param Henkilo puoliso
+     * @return Henkilo ihminen Parametri-puolison puoliso.
      */
     public Henkilo haePuoliso(Henkilo puoliso) {
         for (Henkilo ihminen : ihmiset) {
@@ -159,6 +182,13 @@ public class Piirustuslogiikka {
     }
 
     /**
+     * Luo kuviot henkilon jälkeläisille. Käy läpi vanhemman getLapset-listan ja
+     * ihmiset-listan. Jos ihmiset-listan henkilo vastaa parametrina olevan
+     * vanhemman lasta, eikä ole puolisot-HashMapissa avaimena eikä arvona,
+     * haetaan henkilolle koordinaatti metodia kutsumalla. Koordinaatti
+     * asetetaan falseksi ja luodaan kuvio metodia kutsumalla.
+     * Puolisot-HashMap-tarkistetaan siksi, ettei henkilon kuviota piirrettäisi
+     * kahteen kertaan (puolisona ja lapsena)
      *
      * @param vanhempi
      */
@@ -175,12 +205,12 @@ public class Piirustuslogiikka {
     }
 
     /**
-     * Metodi luo uuden neliön. Neliön parametrit saadaan kutsumalla kolmea
-     * muuta metodia. Kutsuu lisäksi yhtä metodia, jolle annetaan parametreiksi
-     * henkilö ja luotu neliö. Kuvion värittämiseksi.
+     * Metodi luo uuden neliön, parametreista saadaan x ja y, sivunpituus
+     * saadaan metodia kutsumalla. Kutsuu metodia värin asettamiseksi,
+     * parametreina henkilo ja luotu nelio.
      *
      * @param henkilo
-     * @param x eli henkilön indeksi sukupolvi-listassa
+     * @param x
      * @param y
      * @return luotu neliö
      */
@@ -191,8 +221,8 @@ public class Piirustuslogiikka {
     }
 
     /**
-     * Metodi luo uuden ympyrän. Ympyrän parametrit saadaan kutsumalla kolmea
-     * muuta metodia. Kutsuu lisäksi metodia kuvion värittämiseen
+     * Metodi luo uuden ympyrän, parametreista x j y, halkaisija metodia
+     * kutsumalla. Kutsuu metodia värin asettamiseksi
      *
      * @param henkilo
      * @param x
@@ -206,9 +236,9 @@ public class Piirustuslogiikka {
     }
 
     /**
-     * Laskee neliön sivun pituuden tai ympyrän halkaisijan
+     * Palauttaa neliön sivun pituuden / ympyrän halkaisijan
      *
-     * @return numero
+     * @return korkeus
      */
     public int laskeKorkeus() {
         int korkeus = 60;
@@ -218,8 +248,9 @@ public class Piirustuslogiikka {
 
     /**
      * Luo listan Viiva-kuvioita, jonka toinen pää alkaa toisesta puolisosta ja
-     * loppuu toiseen. Käy siis läpi koko henkilö-listan. Luodut viivat lisätään
-     * listana kuviolistaan. Laskee koordinaatit muiden metodien avulla.
+     * loppuu toiseen (mutta niin että viiva alkaa kuvion reunasta). Käy siis
+     * läpi koko henkilö-listan. Luodut viivat lisätään listana kuviolistaan
+     * metodia kutsumalla. Laskee koordinaatit muiden metodien avulla.
      */
     public void luoPuolisoViivat() {
         ArrayList<Kuvio> viivat = new ArrayList<>();
@@ -238,7 +269,7 @@ public class Piirustuslogiikka {
     }
 
     /**
-     * Hakee HashMapista henkilonKuvio henkilön nimen perusteell a kuvion ja
+     * Hakee HashMapista henkilonKuvio henkilön nimen perusteella kuvion ja
      * kuvion x-koordinaatin sekä laskee siitä uuden x-koordinaatin
      *
      * @param henkilo
@@ -268,7 +299,8 @@ public class Piirustuslogiikka {
     /**
      * Logiikka, joka liittyy lapsien ja vanhempien välisiin viivoihin. Luo
      * uuden listan lapsiviivat, kutsuu kolmea muuta metodia ja lisää uudet
-     * viivat listana kuviolistaan metodia kutsumalla
+     * viivat listana kuviolistaan metodia kutsumalla. Yhdelle lapselle viiva
+     * luodaan hiukan eri tavalla.
      */
     public void luoViivatLapsiin() {
         ArrayList<Kuvio> lapsiviivat = new ArrayList<>();
@@ -352,7 +384,6 @@ public class Piirustuslogiikka {
         for (Henkilo lapsi : henkilo.getLapset()) {
             viivat.add(new Viiva(xViivalle(lapsi), y1, xViivalle(lapsi), y2));
         }
-
         return viivat;
     }
 
@@ -392,8 +423,11 @@ public class Piirustuslogiikka {
     }
 
     /**
+     * Luo HashMapin, jossa avaimena String henkilön nimi ja arvona henkilöön
+     * liittyvä kuvio. Käy läpi koko henkilonKuvio-HashMapin ja lisää kaikki
+     * uuteen HashMapiin.
      *
-     * @return
+     * @return HashMap tekstilista
      */
     public HashMap<Kuvio, String> teeStringLista() {
         HashMap<Kuvio, String> tekstilista = new HashMap<Kuvio, String>();
@@ -404,7 +438,14 @@ public class Piirustuslogiikka {
         return tekstilista;
     }
 
-    private void luoKoordinaatit() {
+    /**
+     * Luo listan Koordinaatti-luokan olioita. Luotavat x-koordinaatit on
+     * ennestään määritelty, y-koordinaattien määrä tulee ihmiset-listan
+     * henkilöiden suurimman sukupolven arvosta. Kaikkien koordinaattien tila on
+     * alussa true, eli vapaana.
+     *
+     */
+    public void luoKoordinaatit() {
         int sukupolvienMaara = 0;
         for (Henkilo henkilo : this.ihmiset) {
             if (henkilo.getSukupolvi() > sukupolvienMaara) {

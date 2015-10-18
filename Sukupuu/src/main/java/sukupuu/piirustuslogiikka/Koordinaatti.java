@@ -3,8 +3,9 @@ package sukupuu.piirustuslogiikka;
 import java.util.ArrayList;
 
 /**
+ * Koordinaatti sisältää x-koordinaatin, y-koordinaatin ja boolean-muuttujan
+ * vapaana.
  *
- * @author Hourula
  */
 public class Koordinaatti {
 
@@ -32,5 +33,5 @@ public class Koordinaatti {
 
     public void setVapaana(boolean vapaana) {
         this.vapaana = vapaana;
-    }    
+    }
 }

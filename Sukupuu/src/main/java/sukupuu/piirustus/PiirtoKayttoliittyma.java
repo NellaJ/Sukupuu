@@ -8,10 +8,7 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-/**
- *
- * @author Hourula
- */
+
 public class PiirtoKayttoliittyma implements Runnable {
 
     private JFrame frame;
@@ -19,11 +16,7 @@ public class PiirtoKayttoliittyma implements Runnable {
     private HashMap<Kuvio, String> tekstit;
     private Piirtoalusta piirtoalusta;
 
-    /**
-     *
-     * @param kuviot
-     * @param tekstit
-     */
+    
     public PiirtoKayttoliittyma(ArrayList<Kuvio> kuviot, HashMap<Kuvio, String> tekstit) {
         this.kuviot = kuviot;
         this.tekstit = tekstit;

@@ -13,7 +13,8 @@ import javax.swing.JPanel;
 
 /**
  * Piirtoalusta perii luokan JPanel Muuttujana lista kuvioita jotka Piirtoalusta
- * piirtää
+ * piirtää sekä HashMap tekstit, jonka sisältämä teksti piirretään myös. Tekstin
+ * koordinaatit saadaan HashMapin kuviosta.
  */
 public class Piirtoalusta extends JPanel {
 
@@ -21,6 +22,7 @@ public class Piirtoalusta extends JPanel {
     private HashMap<Kuvio, String> tekstit;
 
     /**
+     * Konstruktori
      *
      * @param kuviot
      * @param tekstit
@@ -42,7 +44,7 @@ public class Piirtoalusta extends JPanel {
         for (Kuvio kuvio : kuviot) {
             graphics2.setPaint(Color.BLACK);
             kuvio.piirra(graphics2);
-            
+
             if (kuvio.onkoVari() == true) {
                 graphics2.setPaint(Color.RED);
                 kuvio.varita(graphics);
@@ -50,7 +52,7 @@ public class Piirtoalusta extends JPanel {
         }
         graphics2.setFont(new Font("TimesRoman", Font.BOLD, 18));
         for (Kuvio kuvio : tekstit.keySet()) {
-            graphics2.drawString(tekstit.get(kuvio), kuvio.getX(), (kuvio.getY() + 80));     
+            graphics2.drawString(tekstit.get(kuvio), kuvio.getX(), (kuvio.getY() + 80));
         }
         graphics2.setFont(new Font("TimesRoman", Font.BOLD, 25));
         graphics2.drawString("SUKUPUU", 300, 50);
