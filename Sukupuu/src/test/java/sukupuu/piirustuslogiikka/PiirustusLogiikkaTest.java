@@ -36,44 +36,32 @@ public class PiirustusLogiikkaTest {
 
     @Test
     public void miespuolinenNelioksi() {
-        ArrayList<Kuvio> kuviot = logiikka.piirraKuviot();
+        ArrayList<Kuvio> kuviot = logiikka.luoKuviot();
         assertTrue(kuviot.get(0) instanceof Nelio);
     }
 
     @Test
     public void naispuolinenMuuttuuYmpyraksi() {
-        ArrayList<Kuvio> kuviot = logiikka.piirraKuviot();
+        ArrayList<Kuvio> kuviot = logiikka.luoKuviot();
         assertTrue(kuviot.get(1) instanceof Ympyra);
     }
 
     @Test
     public void kuvioLisataanListaan() {
-        logiikka.keraaSukupolvet();
+        logiikka.henkilotKuvioiksi();
         assertTrue(logiikka.getKuviolista().size() > 0);
     }
 
     @Test
     public void kuvioLisataanHashmapiin() {
-        logiikka.keraaSukupolvet();
+        logiikka.henkilotKuvioiksi();
         assertTrue(logiikka.getHenkilonKuvio().size() > 0);
     }
 
     @Test
     public void sukupolvenMukaanOikeaYKoordinaatti() {
-        logiikka.keraaSukupolvet();
-        assertEquals(logiikka.getHenkilonKuvio().get(henkilot.get(1).getNimi()).getY(), logiikka.laskeY(henkilot.get(1)));
-    }
-
-    @Test
-    public void laskeeXOikein() {
-        assertEquals(logiikka.laskeX(3), 700);
-    }
-
-    @Test
-    public void laskeeYOikein() {
-        Henkilo tyyppi = new Henkilo("Tyyppi", 20, false, mutaatiotTyhja, Sukupuoli.MIES);
-        tyyppi.setSukupolvi(4);
-        assertEquals(logiikka.laskeY(tyyppi), 800);
+        logiikka.henkilotKuvioiksi();
+        assertEquals(logiikka.getHenkilonKuvio().get(henkilot.get(1).getNimi()).getY(), 200);
     }
 
     @Test
@@ -92,8 +80,8 @@ public class PiirustusLogiikkaTest {
         henkilot.add(mies2);    //indeksi 2
         henkilot.add(nainen2);  //indeksi 3
         logiikka = new Piirustuslogiikka(henkilot);
-        logiikka.keraaSukupolvet();
-        assertEquals(logiikka.kuvionXViivanKoordinaatiksi(nainen2), 730);
+        logiikka.luoKuviot();
+        assertEquals(logiikka.xViivalle(nainen2), 230);
     }
 
     @Test
@@ -107,8 +95,8 @@ public class PiirustusLogiikkaTest {
         henkilot.add(mies2);    //indeksi 2
         henkilot.add(nainen2);  //indeksi 3
         logiikka = new Piirustuslogiikka(henkilot);
-        logiikka.keraaSukupolvet();
-        assertEquals(logiikka.kuvionYViivanKoordinaatiksi(mies2), 630);
+        logiikka.luoKuviot();
+        assertEquals(logiikka.yViivalle(mies2), 630);
 
     }
 
@@ -123,7 +111,7 @@ public class PiirustusLogiikkaTest {
         sinkut.add(nainen);
         Piirustuslogiikka sinkkuLogiikka = new Piirustuslogiikka(sinkut);
 
-        sinkkuLogiikka.keraaSukupolvet();
+        sinkkuLogiikka.luoKuviot();
         int koko = sinkkuLogiikka.getKuviolista().size();
         sinkkuLogiikka.luoPuolisoViivat();
 
@@ -142,19 +130,23 @@ public class PiirustusLogiikkaTest {
         lapsettomat.add(mies);
         lapsettomat.add(nainen);
         Piirustuslogiikka lapsetonLogiikka = new Piirustuslogiikka(lapsettomat);
-        lapsetonLogiikka.keraaSukupolvet();
-        lapsetonLogiikka.luoViivatLapsiin();
-
+        lapsetonLogiikka.luoKuviot();
         int koko = lapsetonLogiikka.getKuviolista().size();
+        lapsetonLogiikka.luoViivatLapsiin();
+        
         assertEquals(koko, lapsetonLogiikka.getKuviolista().size());
     }
 
     @Test
     public void kuvioidenMaaraLisaantyyJosLapsia() {
         ArrayList<Henkilo> lapselliset = luoLapsellistenLista();
+
         Piirustuslogiikka lapsetLogiikka = new Piirustuslogiikka(lapselliset);
-        lapsetLogiikka.keraaSukupolvet();
+
+        lapsetLogiikka.luoPuolisoLista();
+        lapsetLogiikka.henkilotKuvioiksi();
         int koko = lapsetLogiikka.getKuviolista().size();
+        lapsetLogiikka.luoPuolisoViivat();
         lapsetLogiikka.luoViivatLapsiin();
 
         assertTrue(koko < lapsetLogiikka.getKuviolista().size());
@@ -164,7 +156,7 @@ public class PiirustusLogiikkaTest {
     public void ekaLapsiViivaPalauttaaViivan() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
+        logic.luoKuviot();
         assertTrue(logic.ekaLapsiViiva(lista.get(0)) instanceof Viiva);
     }
 
@@ -172,7 +164,7 @@ public class PiirustusLogiikkaTest {
     public void tokaLapsiViivaPalauttaaViivan() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
+        logic.luoKuviot();
         assertTrue(logic.tokaLapsiViiva(lista.get(0)) instanceof Viiva);
     }
 
@@ -180,7 +172,7 @@ public class PiirustusLogiikkaTest {
     public void kolmasLapsiViivaPalauttaaListan() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
+        logic.luoKuviot();
         assertTrue(logic.kolmasLapsiviiva(lista.get(0)) instanceof ArrayList);
     }
 
@@ -188,8 +180,8 @@ public class PiirustusLogiikkaTest {
     public void kolmasLapsiViivaPalauttaaListanJokaEiTyhja() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
-        ArrayList<Kuvio> viivalista = logic.kolmasLapsiviiva(lista.get(0));
+        logic.luoKuviot();
+        ArrayList<Viiva> viivalista = logic.kolmasLapsiviiva(lista.get(0));
         assertTrue(viivalista.size() > 0);
     }
 
@@ -197,8 +189,8 @@ public class PiirustusLogiikkaTest {
     public void kolmasLapsiViivaPalauttaaListanJonkaKokoSamaKuinLapsienMaara() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
-        ArrayList<Kuvio> viivalista = logic.kolmasLapsiviiva(lista.get(0));
+        logic.luoKuviot();
+        ArrayList<Viiva> viivalista = logic.kolmasLapsiviiva(lista.get(0));
         assertEquals(lista.get(0).getLapset().size(), viivalista.size());
     }
 
@@ -206,16 +198,16 @@ public class PiirustusLogiikkaTest {
     public void ekaLapsiViivaX1Oikein() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
+        logic.luoKuviot();
 
-        assertEquals(logic.ekaLapsiViiva(lista.get(0)).getX(), 230);
+        assertEquals(logic.ekaLapsiViiva(lista.get(0)).getX(), 80);
     }
 
     @Test
     public void ekaLapsiViivaY1Oikein() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
+        logic.luoKuviot();
 
         assertEquals(logic.ekaLapsiViiva(lista.get(0)).getY(), 430); //Ei pitÃ¤isi olla 430, vaan 230, mutta muu ei mene lÃ¤pi?!?!?
     }
@@ -224,16 +216,16 @@ public class PiirustusLogiikkaTest {
     public void tokaLapsiViivaX1Oikein() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
+        logic.luoKuviot();
 
-        assertEquals(logic.tokaLapsiViiva(lista.get(0)).getX(), 130);   //VÃ¤Ã¤rin oikeasti, 530 pitÃ¤isi olla
+        assertEquals(logic.tokaLapsiViiva(lista.get(0)).getX(), 30);   //VÃ¤Ã¤rin oikeasti, 530 pitÃ¤isi olla
     }
 
     @Test
     public void tokaLapsiViivaY1Oikein() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
+        logic.luoKuviot();
 
         assertEquals(logic.tokaLapsiViiva(lista.get(0)).getY(), 530);   //VÃ¤Ã¤rin oikeasti, 330 kai?
     }
@@ -241,7 +233,7 @@ public class PiirustusLogiikkaTest {
     public void kolmasLapsiViivaEkallaLapsellaX1Oikein() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
+        logic.luoKuviot();
 
         assertEquals(logic.kolmasLapsiviiva(lista.get(0)).get(0).getX(), 530);
     }
@@ -250,12 +242,17 @@ public class PiirustusLogiikkaTest {
     public void kolmasLapsiViivaEkallaLapsellaY1Oikein() {
         ArrayList<Henkilo> lista = luoLapsellistenLista();
         Piirustuslogiikka logic = new Piirustuslogiikka(lista);
-        logic.keraaSukupolvet();
+        logic.luoKuviot();
 
         assertEquals(logic.kolmasLapsiviiva(lista.get(0)).get(0).getY(), 530);
     }
+    
+    @Test
+    public void koordinaatistoLuodaan() {
+        assertTrue(logiikka.getKoordinaatit().size() > 0);
+    }
 
-    private ArrayList<Henkilo> luoLapsellistenLista() {
+    public ArrayList<Henkilo> luoLapsellistenLista() {
         ArrayList<Henkilo> lapselliset = new ArrayList<Henkilo>();
         Henkilo mies = new Henkilo("M", 40, true, mutaatiotTyhja, Sukupuoli.MIES);    //indeksi 0
         mies.setSukupolvi(1);

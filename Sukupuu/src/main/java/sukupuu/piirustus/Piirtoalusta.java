@@ -3,10 +3,12 @@ package sukupuu.piirustus;
 import sukupuu.piirustuslogiikka.Kuvio;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JPanel;
 
 /**
@@ -16,10 +18,17 @@ import javax.swing.JPanel;
 public class Piirtoalusta extends JPanel {
 
     private ArrayList<Kuvio> kuviot;
+    private HashMap<Kuvio, String> tekstit;
 
-    public Piirtoalusta(ArrayList<Kuvio> kuviot) {
+    /**
+     *
+     * @param kuviot
+     * @param tekstit
+     */
+    public Piirtoalusta(ArrayList<Kuvio> kuviot, HashMap<Kuvio, String> tekstit) {
         super.setBackground(Color.WHITE);
         this.kuviot = kuviot;
+        this.tekstit = tekstit;
     }
 
     //Kaikki piirtäminen pitäisi olla täällä!!!
@@ -39,7 +48,12 @@ public class Piirtoalusta extends JPanel {
                 kuvio.varita(graphics);
             }
         }
-        graphics2.drawString("TestiTeksti", 25, 25);
+        graphics2.setFont(new Font("TimesRoman", Font.BOLD, 18));
+        for (Kuvio kuvio : tekstit.keySet()) {
+            graphics2.drawString(tekstit.get(kuvio), kuvio.getX(), (kuvio.getY() + 80));     
+        }
+        graphics2.setFont(new Font("TimesRoman", Font.BOLD, 25));
+        graphics2.drawString("SUKUPUU", 300, 50);
     }
 
 }

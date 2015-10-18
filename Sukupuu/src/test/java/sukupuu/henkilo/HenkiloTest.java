@@ -28,22 +28,22 @@ public class HenkiloTest {
     }
 
     @Test
-    public void konstruktoriLaittaaOikeanIan() {
+    public void konstruktoriAsettaaOikeanIan() {
         assertEquals(40, henkilo.getIka());
     }
 
     @Test
-    public void konstruktoriLaittaaSairaudenOikein() {
+    public void konstruktoriAsettaaHenkilonSairaaksi() {
         assertEquals(true, henkilo.onkoSairas());
     }
 
     @Test
-    public void konstruktoriLaittaaMutaationOikein() {
+    public void konstruktoriAsettaaMutaation() {
         assertEquals("Mutaatio", henkilo.getMutaatiot().get(0));
     }
 
     @Test
-    public void konstruktoriLaittaaSukupuolenOikein() {
+    public void konstruktoriAsettaaOikeanSukupuolen() {
         assertEquals(Sukupuoli.MIES, henkilo.getSukupuoli());
     }
 
@@ -58,14 +58,14 @@ public class HenkiloTest {
     }
 
     @Test
-    public void sukupolviToimii() {
-        int sukupolvi = 1;
+    public void setteriAsettaaOikeanSukupolven() {
+        int sukupolvi = 3;
         henkilo.setSukupolvi(sukupolvi);
-        assertEquals(1, henkilo.getSukupolvi());
+        assertEquals(3, henkilo.getSukupolvi());
     }
 
     @Test
-    public void negatiivinenIka() {
+    public void negatiivinenIkaAsettuuNollaksi() {
         int ika = -10;
         henkilo.setIka(ika);
         assertEquals(true, henkilo.getIka() >= 0);

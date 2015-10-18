@@ -37,7 +37,7 @@ public class Viiva extends Kuvio {
     }
 
     /**
-     *
+     * Viivan värittäminen ei käytössä missään
      * @param graphics
      */
     @Override
