@@ -1,9 +1,9 @@
 #####Aihekuvaus
 **Sukupuu** 
 Ohjelma piirtää sukupuun käyttäjän antaman syötteen perusteella (graafinen käyttöliittymä). Miespuoliset piirretään neliöinä ja naispuoliset ympyröinä. Sukupuussa tulevat näkymään periytyvä sairaus/ominaisuus kuvion värin perusteella, eli värillinen on sairas ja väritön/valkoinen terve. Ohjelma on tarkoitettu suhteellisen pienille suvuille, esim. 3 sukupolvea, 10 henkilöä (eikä sisäsiittoisuutta). Kuvioiden väleille piirretään viivat sukulaisuussuhteiden mukaan. Kuvioiden alle tulee henkilön nimi. 
-######Käyttäjät
+#####Käyttäjät
 Genetiikan opiskelijat, tutkijat jne., jotka tarvitsevat kuvan sukupuusta vaikka julkaisua tai tutkielmaa varten.
-
+####Ohjelman toiminta
 Ohjelman käynnistys avaa ikkunan, johon syötetään henkilöiden tietoja: nimi (pakollinen), ikä, sukupuoli, mutaatiot ja se, onko henkilö sairas vai terve. Henkilön puolisolle ja lapsille on myös omat kentät. (Huom! Puoliso tarkoittaa tässä yhteydessä yhteisen lapsen toista vanhempaa). Henkilöiden tiedot syötetään henkilö kerrallaan ja aina yksi sukupolvi kerrallaan. Kun kaikki henkilöt on syötetty, henkilöistä muodostetaan Henkilo-oliot, jotka talletetaan listaan. Tämä lista syötetään piirustuslogiikkaan, joka luo piirrettävät kuviot. Miespuolisesta henkilöstä luodaan siis neliö ja naispuolisesta ympyrä. Kuvion y-koordinaatin määrää henkilön sukupolvi. X-koordinaatin laskemisessa huolehditaan että puolisot tulevat vierekkäin ja sisarukset samoin. Viivat luodaan puolisoiden välille sekä puolisoista lapsiin. Piirustuslogiikka myös määrittelee kuvion värin (musta): jos henkilö on sairas, kuvio saa värin ja jos ei ole, kuvio jää värittömäksi. Kaikki luodut kuviot talletetaan listaan, joka palautetaan Ohjelmalogiikkaan.
 Ohjelmalogiikka luo PiirtoKayttoLiittyma-olion, jolle annetaan parametrina kuviolista sekä tieto henkilöiden nimistä koordinaatteineen. PiirtoKayttoLiittyma luo Piirustusalustan, jossa varsinainen piirtäminen tapahtuu. Aukeaa uusi ikkuna, jossa piirretty sukupuu sekä henkilöiden nimet kuvioiden alla.
 
