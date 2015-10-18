@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/Hourula/Documents/GitHub/Sukupuu/Sukupuu/target/classes'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'C:/Users/Hourula/Documents/GitHub/Sukupuu/Sukupuu/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2015. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Hourula/Documents/GitHub/Sukupuu/Sukupuu/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Sukupuu 1.0-SNAPSHOT API'
+-linkoffline
+'http://docs.oracle.com/javase/7/docs/api' 'C:/Users/Hourula/Documents/GitHub/Sukupuu/Sukupuu/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'Sukupuu 1.0-SNAPSHOT API'

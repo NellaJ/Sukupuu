@@ -16,7 +16,7 @@ import sukupuu.henkilo.Henkilo;
  * HashMapin tekstit kutsumalla Piirustuslogiikan metodia. Luo uuden
  * PiirtoKayttoLiittyman, joka saa parametreina kuviot-listan ja
  * tekstit-HashMapin.
- *
+ *Pii
  */
 public class Ohjelmalogiikka {
 
